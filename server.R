@@ -156,7 +156,7 @@ shinyServer(function(input, output,session) {
 
 
     observeEvent(input$years,{
-      updateSliderInput(session, "minMatches", value = helper1(IPLTeamNames,input$years,"./ipl/iplBattingBowlingDetails")[[4]])
+      updateSliderInput(session, "minMatches", max = helper1(IPLTeamNames,input$years,"./ipl/iplBattingBowlingDetails")[[4]],value = helper1(IPLTeamNames,input$years,"./ipl/iplBattingBowlingDetails")[[4]]- 20)
     })
 
 

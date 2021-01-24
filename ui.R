@@ -164,7 +164,7 @@ shinyUI(fluidPage(
                                               }
 
                                             ')),
-                                            sliderInput("years", "Since year",min = (helper(IPLTeamNames,"./ipl/iplBattingBowlingDetails")[[1]]), max = (helper(IPLTeamNames,"./ipl/iplBattingBowlingDetails")[[2]]), value = 2020, step = 1),
+                                            sliderInput("years", "Since year",min = (helper(IPLTeamNames,"./ipl/iplBattingBowlingDetails")[[1]]), max = (helper(IPLTeamNames,"./ipl/iplBattingBowlingDetails")[[2]]), value = (helper(IPLTeamNames,"./ipl/iplBattingBowlingDetails")[[1]]), step = 1),
                                             sliderInput("minMatches", "Matches played",min = (helper(IPLTeamNames,"./ipl/iplBattingBowlingDetails")[[3]]), max = (helper(IPLTeamNames,"./ipl/iplBattingBowlingDetails")[[4]]), value = 0, step = 1),
                                             #selectInput('runsOverSR', 'Choose Runs vs SR', runsVsSR),
                                             uiOutput("Mode")
