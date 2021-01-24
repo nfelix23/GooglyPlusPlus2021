@@ -149,8 +149,9 @@ shinyServer(function(input, output,session) {
     output$rankIPL <-  renderUI({
       # Check if output is a dataframe. If so, print
       print(input$rankFuncIPL)
-      if(is.data.frame(rankPlayers(input, output,"IPL"))){
+      if(is.data.frame(a <- rankPlayers(input, output,"IPL"))){
         tableOutput("IPLRankPlayerPrint")
+
       }
     })
 
