@@ -139,9 +139,9 @@ shinyUI(fluidPage(
 
                                         ),
                                  # Rank IPL PlayersL tab
-                                 tabPanel("Rank IPL Players",
+                                 tabPanel("Rank IPL Batsmen",
 
-                                          h4('Rank IPL player performances'),
+                                          h4('Rank IPL Batsmen'),
 
                                           sidebarPanel(
                                             selectInput('rankFuncIPL', 'Select function', rankIPLPlayerFuncs),
@@ -164,9 +164,9 @@ shinyUI(fluidPage(
                                               }
 
                                             ')),
-                                            #uiOutput("Years"),
+                                            #uiOutput("yearsPlayed"),
                                             #uiOutput("MinMatches"),
-                                            sliderInput("years", "Since year",min = (helper(IPLTeamNames,"./ipl/iplBattingBowlingDetails")[[1]]), max = (helper(IPLTeamNames,"./ipl/iplBattingBowlingDetails")[[2]]), value = (helper(IPLTeamNames,"./ipl/iplBattingBowlingDetails")[[1]]), step = 1),
+                                            sliderInput("yearSelected", "Since year",min = (helper(IPLTeamNames,"./ipl/iplBattingBowlingDetails")[[1]]), max = (helper(IPLTeamNames,"./ipl/iplBattingBowlingDetails")[[2]]), value = (helper(IPLTeamNames,"./ipl/iplBattingBowlingDetails")[[1]]), step = 1),
                                             sliderInput("minMatches", "Matches played",min = (helper(IPLTeamNames,"./ipl/iplBattingBowlingDetails")[[3]]), max = (helper(IPLTeamNames,"./ipl/iplBattingBowlingDetails")[[4]]), value = 0, step = 1),
                                             #selectInput('runsOverSR', 'Mode', runsVsSR),
                                             uiOutput("Mode")

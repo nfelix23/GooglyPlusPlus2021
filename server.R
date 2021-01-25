@@ -132,9 +132,8 @@ shinyServer(function(input, output,session) {
     ################################ Rank IPL ##############################
     # Analyze overall IPL team performance plots
 
-    observeEvent(input$years,{
-      updateSliderInput(session, "minMatches", value = helper1(IPLTeamNames, input$years,"./ipl/iplBattingBowlingDetails")[[4]])
-      #shinyjs::disable("minMatches")
+    observeEvent(input$yearSelected,{
+      updateSliderInput(session, "minMatches", max = helper1(IPLTeamNames,input$yearSelected,"./ipl/iplBattingBowlingDetails")[[4]],value = helper1(IPLTeamNames,input$yearSelected,"./ipl/iplBattingBowlingDetails")[[4]]- 20)
     })
 
     # Analyze and display IPL Match table
@@ -156,9 +155,7 @@ shinyServer(function(input, output,session) {
     })
 
 
-    observeEvent(input$years,{
-      updateSliderInput(session, "minMatches", max = helper1(IPLTeamNames,input$years,"./ipl/iplBattingBowlingDetails")[[4]],value = helper1(IPLTeamNames,input$years,"./ipl/iplBattingBowlingDetails")[[4]]- 20)
-    })
+
 
 
 
