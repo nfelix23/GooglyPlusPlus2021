@@ -12,6 +12,7 @@ library(yorkr)
 library(rpart)
 library(dplyr)
 library(ggplot2)
+library(lubridate)
 library(rpart.plot)
 library(shinycssloaders)
 
@@ -130,26 +131,49 @@ shinyServer(function(input, output,session) {
 
 
     ################################ Rank IPL ##############################
-    # Analyze overall IPL team performance plots
+    # Rank IPL Batsmen
 
     observeEvent(input$yearSelected,{
       updateSliderInput(session, "minMatches", max = helper1(IPLTeamNames,input$yearSelected,"./ipl/iplBattingBowlingDetails")[[4]],value = helper1(IPLTeamNames,input$yearSelected,"./ipl/iplBattingBowlingDetails")[[4]]- 20)
     })
 
     # Analyze and display IPL Match table
-    output$IPLRankPlayerPrint <- renderTable({
+    output$IPLRankBatsmenPrint <- renderTable({
       Sys.sleep(1.5)
       plot(runif(10))
-      a <- rankPlayers(input, output,"IPL")
+      a <- rankPlayers(input, output,"IPL","batsmen")
       head(a,20)
     })
 
     # Output either a table or a plot
-    output$rankIPL <-  renderUI({
+    output$rankIPLBatsmen <-  renderUI({
       # Check if output is a dataframe. If so, print
-      print(input$rankFuncIPL)
-      if(is.data.frame(a <- rankPlayers(input, output,"IPL"))){
-        tableOutput("IPLRankPlayerPrint")
+      if(is.data.frame(a <- rankPlayers(input, output,"IPL","batsmen"))){
+        tableOutput("IPLRankBatsmenPrint")
+
+      }
+    })
+
+    ########################################
+    # Rank IPL Bowlers
+    observeEvent(input$yearSelected1,{
+      updateSliderInput(session, "minMatches1", max = helper3(IPLTeamNames,input$yearSelected1,"./ipl/iplBattingBowlingDetails")[[4]],value = helper3(IPLTeamNames,input$yearSelected1,"./ipl/iplBattingBowlingDetails")[[4]]- 20)
+    })
+
+    # Analyze and display IPL Match table
+    output$IPLRankBowlersPrint <- renderTable({
+      Sys.sleep(1.5)
+      plot(runif(10))
+      a <- rankPlayers(input, output,"IPL","bowlers")
+      head(a,20)
+    })
+
+    # Output either a table or a plot
+    output$rankIPLBowlers <-  renderUI({
+      # Check if output is a dataframe. If so, print
+
+      if(is.data.frame(a <- rankPlayers(input, output,"IPL","bowlers"))){
+        tableOutput("IPLRankBowlersPrint")
 
       }
     })

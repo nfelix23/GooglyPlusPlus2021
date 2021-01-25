@@ -138,13 +138,13 @@ shinyUI(fluidPage(
                                           )
 
                                         ),
-                                 # Rank IPL PlayersL tab
+                                 # Rank IPL Batsmen tab
                                  tabPanel("Rank IPL Batsmen",
 
                                           h4('Rank IPL Batsmen'),
 
                                           sidebarPanel(
-                                            selectInput('rankFuncIPL', 'Select function', rankIPLPlayerFuncs),
+
                                             tags$head( tags$style( type = "text/css", '
                                               .js-irs-0 .irs-line-mid{
                                                 background: #428bca ;
@@ -174,7 +174,53 @@ shinyUI(fluidPage(
                                           ),
                                           mainPanel(
                                             shinycssloaders::withSpinner(
-                                              uiOutput('rankIPL'),
+                                              uiOutput('rankIPLBatsmen'),
+                                            ),
+
+                                            column(7, offset=4,
+                                                   tags$h5((tags$i("Designed and developed by Tinniam V Ganesh"))),
+                                                   tags$h5((tags$i("Jan 7,2021"))),
+                                                   tags$h6("Data source Cricsheet: http://cricsheet.org/"),
+                                                   tags$a(href="https://cran.r-project.org/web/packages/yorkr/index.html", " Based on R package yorkr")
+                                            )
+                                          )
+                                 ),
+                                 # Rank IPL Bowlers tab
+                                 tabPanel("Rank IPL Bowlers",
+
+                                          h4('Rank IPL Bowlers'),
+
+                                          sidebarPanel(
+
+
+                                            tags$head( tags$style( type = "text/css", '
+                                              .js-irs-2 .irs-line-mid{
+                                                background: #428bca ;
+                                                border: 1px solid #428bca ;
+                                              }
+                                              .js-irs-2 .irs-line-right{
+                                                background: #428bca ;
+                                              }
+                                              .js-irs-2 .irs-bar {
+                                                background: linear-gradient(to bottom, #DDD -50%, #FFF 150%);
+                                                border-top: 1px solid #CCC ;
+                                                border-bottom: 1px solid #CCC ;
+                                              }
+                                              .js-irs-2 .irs-bar-edge {
+                                                background: inherit ;
+                                                border: inherit ;
+                                              }
+                                            ')),
+
+                                            sliderInput("yearSelected1", "Since year",min = (helper2(IPLTeamNames,"./ipl/iplBattingBowlingDetails")[[1]]), max = (helper2(IPLTeamNames,"./ipl/iplBattingBowlingDetails")[[2]]), value = (helper2(IPLTeamNames,"./ipl/iplBattingBowlingDetails")[[1]]), step = 1),
+                                            sliderInput("minMatches1", "Matches played",min = (helper2(IPLTeamNames,"./ipl/iplBattingBowlingDetails")[[3]]), max = (helper2(IPLTeamNames,"./ipl/iplBattingBowlingDetails")[[4]]), value = 0, step = 1),
+                                            #selectInput('runsOverSR', 'Mode', runsVsSR),
+                                            uiOutput("Mode1")
+
+                                          ),
+                                          mainPanel(
+                                            shinycssloaders::withSpinner(
+                                              uiOutput('rankIPLBowlers'),
                                             ),
 
                                             column(7, offset=4,
@@ -185,6 +231,7 @@ shinyUI(fluidPage(
                                             )
                                           )
                                  )
+
 
                                  ))),
 

@@ -36,29 +36,31 @@
   #
   # }
 
-rankPlayers <- function(input,output,type="IPL") {
+rankPlayers <- function(input,output,type="IPL",player="batsmen") {
   cat("Entering rank Players\n")
 
   if (type == "IPL"){
     output$Mode <- renderUI({
-      if (input$rankFuncIPL == "Rank IPL batsmen"){
         selectInput('runsOverSR', 'Mode',choices=runsVsSR,selected=input$runsOverSR)
-      } else if (input$rankFuncIPL == "Rank IPL bowlers"){
-        selectInput('wicketsOverER', 'Mode',choices=wicketsVsER,selected=input$wicketsOverER)
-      }
+    })
+
+    output$Mode1 <- renderUI({
+      selectInput('wicketsOverER', 'Mode',choices=wicketsVsER,selected=input$wicketsOverER)
     })
 
 
   }
 
-  cat("year=",input$yearSelected," minMatches=",input$minMatches, "\n")
+
 
   if(type == "IPL"){
-    if(input$rankFuncIPL == "Rank IPL batsmen"){
-      cat("#######=",input$yearSelected,input$runsOverSR)
+    if(player=="batsmen"){
+      cat("year=",input$yearSelected," minMatches=",input$minMatches, "\n")
+
       a <-rankIPLBatsmen("./ipl/iplBattingBowlingDetails",input$minMatches, input$yearSelected,input$runsOverSR)
-    } else if (input$rankFuncIPL == "Rank IPL bowlers"){
-      a <- rankIPLBowlers("./ipl/iplMatches","./ipl/iplBattingBowlingDetails",input$minMatches)
+    } else if (player =="bowlers"){
+      cat("year1=",input$yearSelected1," minMatches1=",input$minMatches1, "\n")
+      a <- rankIPLBowlers("./ipl/iplBattingBowlingDetails",input$minMatches1, input$yearSelected1,input$wicketsOverER)
 
     }
   } else if (type ==  "T20M"){
