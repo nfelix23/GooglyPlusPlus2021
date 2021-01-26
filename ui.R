@@ -753,21 +753,82 @@ shinyUI(fluidPage(
                                            )
 
                                   ),
-                                  # Rank BBL PlayersL tab
-                                  tabPanel("Rank BBL Players",
+                                  # Rank BBL Players tab
+                                  tabPanel("Rank  BBL Batsmen",
 
-                                           h4('Rank BBL player performances'),
+                                           h4('Rank  BBL Batsmen '),
 
                                            sidebarPanel(
-                                             selectInput('rankFuncBBL', 'Select function', rankBBLPlayerFuncs),
-                                             sliderInput("minMatchesBBL", "Minimum Matches:",
-                                                         min = 10, max = 70,
-                                                         value = 50),
+                                             tags$head( tags$style( type = "text/css", '
+                                                .js-irs-12 .irs-line-mid{
+                                                  background: #428bca ;
+                                                  border: 1px solid #428bca ;
+                                                }
+                                                .js-irs-12 .irs-line-right{
+                                                  background: #428bca ;
+                                                }
+                                                .js-irs-12 .irs-bar {
+                                                  background: linear-gradient(to bottom, #DDD -50%, #FFF 150%);
+                                                  border-top: 1px solid #CCC ;
+                                                  border-bottom: 1px solid #CCC ;
+                                                }
+                                                .js-irs-12 .irs-bar-edge {
+                                                  background: inherit ;
+                                                  border: inherit ;
+                                                }
+
+                                              ')),
+
+                                             sliderInput("yearSelectedBBL", "Since year",min = (helper(BBLTeamNames,"./bbl/bblBattingBowlingDetails")[[1]]), max = (helper(BBLTeamNames,"./bbl/bblBattingBowlingDetails")[[2]]), value = (helper(BBLTeamNames,"./bbl/bblBattingBowlingDetails")[[1]]), step = 1),
+                                             sliderInput("minMatchesBBL", "Matches played",min = (helper(BBLTeamNames,"./bbl/bblBattingBowlingDetails")[[3]]), max = (helper(BBLTeamNames,"./bbl/bblBattingBowlingDetails")[[4]]), value = 0, step = 1),
+                                             uiOutput("ModeBBL")
 
                                            ),
                                            mainPanel(
                                              shinycssloaders::withSpinner(
-                                               uiOutput('rankBBL'),
+                                               uiOutput('rankBBLBatsmen'),
+                                             ),
+
+                                             column(7, offset=4,
+                                                    tags$h5((tags$i("Designed and developed by Tinniam V Ganesh"))),
+                                                    tags$h5((tags$i("Jan 7,2021"))),
+                                                    tags$h6("Data source Cricsheet: http://cricsheet.org/"),
+                                                    tags$a(href="https://cran.r-project.org/web/packages/yorkr/index.html", " Based on R package yorkr")
+                                             )
+                                           )
+                                  ),
+                                  # Rank T20 Bowlers(women) tab
+                                  tabPanel("Rank BBL Bowlers",
+
+                                           h4('Rank BBL Bowlers '),
+
+                                           sidebarPanel(
+                                             tags$head( tags$style( type = "text/css", '
+                                                    .js-irs-14 .irs-line-mid{
+                                                      background: #428bca ;
+                                                      border: 1px solid #428bca ;
+                                                    }
+                                                    .js-irs-14 .irs-line-right{
+                                                      background: #428bca ;
+                                                    }
+                                                    .js-irs-14 .irs-bar {
+                                                      background: linear-gradient(to bottom, #DDD -50%, #FFF 150%);
+                                                      border-top: 1px solid #CCC ;
+                                                      border-bottom: 1px solid #CCC ;
+                                                    }
+                                                    .js-irs-14 .irs-bar-edge {
+                                                      background: inherit ;
+                                                      border: inherit ;
+                                                    }
+                                                  ')),
+
+                                             sliderInput("yearSelected1BBL", "Since year",min = (helper2(BBLTeamNames,"./bbl/bblBattingBowlingDetails")[[1]]), max = (helper2(BBLTeamNames,"./bbl/bblBattingBowlingDetails")[[2]]), value = (helper2(BBLTeamNames,"./bbl/bblBattingBowlingDetails")[[1]]), step = 1),
+                                             sliderInput("minMatches1BBL", "Matches played",min = (helper2(BBLTeamNames,"./bbl/bblBattingBowlingDetails")[[3]]), max = (helper2(BBLTeamNames,"./bbl/bblBattingBowlingDetails")[[4]]), value = 0, step = 1),
+                                             uiOutput("Mode1BBL")
+                                           ),
+                                           mainPanel(
+                                             shinycssloaders::withSpinner(
+                                               uiOutput('rankBBLBowlers'),
                                              ),
                                              column(7, offset=4,
                                                     tags$h5((tags$i("Designed and developed by Tinniam V Ganesh"))),

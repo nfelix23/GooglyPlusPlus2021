@@ -586,24 +586,51 @@ shinyServer(function(input, output,session) {
 
 
     ################################ Rank BBL ##############################
-    # Analyze overall BBL team performance plots
 
 
     # Display ranks
-    output$BBLRankPlayerPrint <- renderTable({
+    observeEvent(input$yearSelectedBBL,{
+      updateSliderInput(session, "minMatchesBBL", max = helper1(BBLTeamNames,input$yearSelectedBBL,"./bbl/bblBattingBowlingDetails")[[4]],value = helper1(BBLTeamNames,input$yearSelectedBBL,"./bbl/bblBattingBowlingDetails")[[4]]- 8)
+    })
+
+    # Analyze and display BBL Match table
+    output$BBLRankBatsmenPrint <- renderTable({
       Sys.sleep(1.5)
       plot(runif(10))
-      a <- rankPlayers(input, output,"BBL")
+      a <- rankPlayers(input, output,"BBL","batsmen")
       head(a,20)
-
     })
-    # Output either a table or a plot
-    output$rankBBL <-  renderUI({
-      # Check if output is a dataframe. If so, print
-      print(input$rankFuncBBL)
-      if(is.data.frame(rankPlayers(input, output,"BBL"))){
 
-        tableOutput("BBLRankPlayerPrint")
+    # Output either a table or a plot
+    output$rankBBLBatsmen <-  renderUI({
+      # Check if output is a dataframe. If so, print
+      if(is.data.frame(a <- rankPlayers(input, output,"BBL","batsmen"))){
+        tableOutput("BBLRankBatsmenPrint")
+
+      }
+    })
+
+    ########################################
+    # Rank BBL Bowlers
+    observeEvent(input$yearSelected1BBL,{
+      updateSliderInput(session, "minMatches1BBL", max = helper3(BBLTeamNames,input$yearSelected1BBL,"./bbl/bblBattingBowlingDetails")[[4]],value = helper3(BBLTeamNames,input$yearSelected1BBL,"./bbl/bblBattingBowlingDetails")[[4]]- 8)
+    })
+
+    # Analyze and display BBL Match table
+    output$BBLRankBowlersPrint <- renderTable({
+      Sys.sleep(1.5)
+      plot(runif(10))
+      a <- rankPlayers(input, output,"BBL","bowlers")
+      head(a,20)
+    })
+
+    # Output either a table or a plot
+    output$rankBBLBowlers <-  renderUI({
+      # Check if output is a dataframe. If so, print
+
+      if(is.data.frame(a <- rankPlayers(input, output,"BBL","bowlers"))){
+        tableOutput("BBLRankBowlersPrint")
+
       }
     })
     ##########################################################################################
