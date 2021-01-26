@@ -315,7 +315,7 @@ shinyServer(function(input, output,session) {
     ########################################
     # Rank T20M Bowlers
     observeEvent(input$yearSelected1T20M,{
-      updateSliderInput(session, "minMatches1T20M", max = helper3(T20MTeamNames,input$yearSelected1T20M,"./t20/t20BattingBowlingDetails")[[4]],value = helper3(T20MTeamNames,input$yearSelected1T20M,"./t20/t20BattingBowlingDetails")[[4]]- 8)
+      updateSliderInput(session, "minMatches1T20M", max = helper3(T20MTeamNames,input$yearSelected1T20M,"./t20/t20BattingBowlingDetails")[[4]],value = helper3(T20MTeamNames,input$yearSelected1T20M,"./t20/t20BattingBowlingDetails")[[4]]- 12)
     })
 
     # Analyze and display T20M Match table
@@ -827,21 +827,50 @@ shinyServer(function(input, output,session) {
     # Analyze overall PSL team performance plots
 
 
+
     # Display ranks
-    output$PSLRankPlayerPrint <- renderTable({
+    observeEvent(input$yearSelectedPSL,{
+      updateSliderInput(session, "minMatchesPSL", max = helper1(PSLTeamNames,input$yearSelectedPSL,"./psl/pslBattingBowlingDetails")[[4]],value = helper1(PSLTeamNames,input$yearSelectedPSL,"./psl/pslBattingBowlingDetails")[[4]]- 8)
+    })
+
+    # Analyze and display PSL Match table
+    output$PSLRankBatsmenPrint <- renderTable({
       Sys.sleep(1.5)
       plot(runif(10))
-      a <- rankPlayers(input, output,"PSL")
+      a <- rankPlayers(input, output,"PSL","batsmen")
       head(a,20)
-
     })
-    # Output either a table or a plot
-    output$rankPSL <-  renderUI({
-      # Check if output is a dataframe. If so, print
-      print(input$rankFuncPSL)
-      if(is.data.frame(rankPlayers(input, output,"PSL"))){
 
-        tableOutput("PSLRankPlayerPrint")
+    # Output either a table or a plot
+    output$rankPSLBatsmen <-  renderUI({
+      # Check if output is a dataframe. If so, print
+      if(is.data.frame(a <- rankPlayers(input, output,"PSL","batsmen"))){
+        tableOutput("PSLRankBatsmenPrint")
+
+      }
+    })
+
+    ########################################
+    # Rank PSL Bowlers
+    observeEvent(input$yearSelected1PSL,{
+      updateSliderInput(session, "minMatches1PSL", max = helper3(PSLTeamNames,input$yearSelected1PSL,"./psl/pslBattingBowlingDetails")[[4]],value = helper3(PSLTeamNames,input$yearSelected1PSL,"./psl/pslBattingBowlingDetails")[[4]]- 8)
+    })
+
+    # Analyze and display PSL Match table
+    output$PSLRankBowlersPrint <- renderTable({
+      Sys.sleep(1.5)
+      plot(runif(10))
+      a <- rankPlayers(input, output,"PSL","bowlers")
+      head(a,20)
+    })
+
+    # Output either a table or a plot
+    output$rankPSLBowlers <-  renderUI({
+      # Check if output is a dataframe. If so, print
+
+      if(is.data.frame(a <- rankPlayers(input, output,"PSL","bowlers"))){
+        tableOutput("PSLRankBowlersPrint")
+
       }
     })
 
@@ -1001,22 +1030,46 @@ shinyServer(function(input, output,session) {
     ################################ Rank WBB ##############################
     # Analyze overall WBB team performance plots
 
-
     # Display ranks
-    output$WBBRankPlayerPrint <- renderTable({
+    observeEvent(input$yearSelectedWBB,{
+      updateSliderInput(session, "minMatchesWBB", max = helper1(WBBTeamNames,input$yearSelectedWBB,"./wbb/wbbBattingBowlingDetails")[[4]],value = helper1(WBBTeamNames,input$yearSelectedWBB,"./wbb/wbbBattingBowlingDetails")[[4]]- 5)
+    })
+
+    # Analyze and display WBB Match table
+    output$WBBRankBatsmenPrint <- renderTable({
       Sys.sleep(1.5)
       plot(runif(10))
-      a <- rankPlayers(input, output,"WBB")
+      a <- rankPlayers(input, output,"WBB","batsmen")
       head(a,20)
-
     })
-    # Output either a table or a plot
-    output$rankWBB <-  renderUI({
-      # Check if output is a dataframe. If so, print
-      print(input$rankFuncWBB)
-      if(is.data.frame(rankPlayers(input, output,"WBB"))){
 
-        tableOutput("WBBRankPlayerPrint")
+    # Output either a table or a plot
+    output$rankWBBBatsmen <-  renderUI({
+      # Check if output is a dataframe. If so, print
+      if(is.data.frame(a <- rankPlayers(input, output,"WBB","batsmen"))){
+        tableOutput("WBBRankBatsmenPrint")
+
+      }
+    })
+    observeEvent(input$yearSelected1WBB,{
+      updateSliderInput(session, "minMatches1WBB", max = helper3(WBBTeamNames,input$yearSelected1WBB,"./wbb/wbbBattingBowlingDetails")[[4]],value = helper3(WBBTeamNames,input$yearSelected1WBB,"./wbb/wbbBattingBowlingDetails")[[4]]- 5)
+    })
+
+    # Analyze and display WBB Match table
+    output$WBBRankBowlersPrint <- renderTable({
+      Sys.sleep(1.5)
+      plot(runif(10))
+      a <- rankPlayers(input, output,"WBB","bowlers")
+      head(a,20)
+    })
+
+    # Output either a table or a plot
+    output$rankWBBBowlers <-  renderUI({
+      # Check if output is a dataframe. If so, print
+
+      if(is.data.frame(a <- rankPlayers(input, output,"WBB","bowlers"))){
+        tableOutput("WBBRankBowlersPrint")
+
       }
     })
 

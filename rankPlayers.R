@@ -60,6 +60,26 @@ rankPlayers <- function(input,output,type="IPL",player="batsmen") {
       selectInput('wicketsOverERNTB', 'Mode1NTB',choices=wicketsVsER,selected=input$wicketsOverERNTB)
     })
 
+  } else if (type == "PSL"){
+    print("PSL")
+    output$ModePSL <- renderUI({
+      selectInput('runsOverSRPSL', 'ModePSL',choices=runsVsSR,selected=input$runsOverSRPSL)
+    })
+
+    output$Mode1PSL <- renderUI({
+      selectInput('wicketsOverERPSL', 'Mode1PSL',choices=wicketsVsER,selected=input$wicketsOverERPSL)
+    })
+
+  } else if (type == "WBB"){
+    print("WBB")
+    output$ModeWBB <- renderUI({
+      selectInput('runsOverSRWBB', 'ModeWBB',choices=runsVsSR,selected=input$runsOverSRWBB)
+    })
+
+    output$Mode1WBB <- renderUI({
+      selectInput('wicketsOverERWBB', 'Mode1WBB',choices=wicketsVsER,selected=input$wicketsOverERWBB)
+    })
+
   }
 
   cat("runs vs SR T20W=",input$runsOverSRT20W)
@@ -103,19 +123,17 @@ rankPlayers <- function(input,output,type="IPL",player="batsmen") {
 
     }
   } else if (type ==  "PSL"){
-    if(input$rankFuncPSL == "Rank PSL batsmen"){
-      a <- rankPSLBatsmen("./psl/pslMatches","./psl/pslBattingBowlingDetails",input$minMatchesPSL)
-    } else if (input$rankFuncPSL == "Rank PSL bowlers"){
-      a <- rankPSLBowlers("./psl/pslMatches","./psl/pslBattingBowlingDetails",input$minMatchesPSL)
-      print(a)
+    if(player=="batsmen"){
+      a <- rankT20Batsmen(PSLTeamNames,"./psl/pslBattingBowlingDetails",input$minMatchesPSL,input$yearSelectedPSL,input$runsOverSRPSL)
+    } else if (player =="bowlers"){
+      a <-rankT20Bowlers(PSLTeamNames,"./psl/pslBattingBowlingDetails",input$minMatches1PSL, input$yearSelected1PSL,input$wicketsOverERPSL)
 
     }
   } else if (type ==  "WBB"){
-    if(input$rankFuncWBB == "Rank WBB batsmen"){
-      a <- rankWBBBatsmen("./wbb/wbbMatches","./wbb/wbbBattingBowlingDetails",input$minMatchesWBB)
-    } else if (input$rankFuncWBB == "Rank WBB bowlers"){
-      a <- rankWBBBowlers("./wbb/wbbMatches","./wbb/wbbBattingBowlingDetails",input$minMatchesWBB)
-      print(a)
+    if(player=="batsmen"){
+      a <- rankT20Batsmen(WBBTeamNames,"./wbb/wbbBattingBowlingDetails",input$minMatchesWBB,input$yearSelectedWBB,input$runsOverSRWBB)
+    } else if (player =="bowlers"){
+      a <-rankT20Bowlers(WBBTeamNames,"./wbb/wbbBattingBowlingDetails",input$minMatches1WBB, input$yearSelected1WBB,input$wicketsOverERWBB)
 
     }
   }
