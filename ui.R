@@ -797,7 +797,7 @@ shinyUI(fluidPage(
                                              )
                                            )
                                   ),
-                                  # Rank T20 Bowlers(women) tab
+                                  # Rank BBL Bowlers tab
                                   tabPanel("Rank BBL Bowlers",
 
                                            h4('Rank BBL Bowlers '),
@@ -952,23 +952,83 @@ shinyUI(fluidPage(
                                            )
 
                                   ),
-                                  # Rank NTB PlayersL tab
-                                  tabPanel("Rank NTB Players",
+                                  # Rank NTB Players tab
+                                  tabPanel("Rank  NTB Batsmen",
 
-                                           h4('Rank NTB player performances'),
+                                           h4('Rank  NTB Batsmen '),
 
                                            sidebarPanel(
-                                             selectInput('rankFuncNTB', 'Select function', rankNTBPlayerFuncs),
-                                             sliderInput("minMatchesNTB", "Minimum Matches:",
-                                                         min = 10, max = 25,
-                                                         value = 20),
+                                             tags$head( tags$style( type = "text/css", '
+                                                .js-irs-16 .irs-line-mid{
+                                                  background: #428bca ;
+                                                  border: 1px solid #428bca ;
+                                                }
+                                                .js-irs-16 .irs-line-right{
+                                                  background: #428bca ;
+                                                }
+                                                .js-irs-16 .irs-bar {
+                                                  background: linear-gradient(to bottom, #DDD -50%, #FFF 150%);
+                                                  border-top: 1px solid #CCC ;
+                                                  border-bottom: 1px solid #CCC ;
+                                                }
+                                                .js-irs-16 .irs-bar-edge {
+                                                  background: inherit ;
+                                                  border: inherit ;
+                                                }
+
+                                              ')),
+
+                                             sliderInput("yearSelectedNTB", "Since year",min = (helper(NTBTeamNames,"./ntb/ntbBattingBowlingDetails")[[1]]), max = (helper(NTBTeamNames,"./ntb/ntbBattingBowlingDetails")[[2]]), value = (helper(NTBTeamNames,"./ntb/ntbBattingBowlingDetails")[[1]]), step = 1),
+                                             sliderInput("minMatchesNTB", "Matches played",min = (helper(NTBTeamNames,"./ntb/ntbBattingBowlingDetails")[[3]]), max = (helper(NTBTeamNames,"./ntb/ntbBattingBowlingDetails")[[4]]), value = 0, step = 1),
+                                             uiOutput("ModeNTB")
 
                                            ),
                                            mainPanel(
                                              shinycssloaders::withSpinner(
-                                               uiOutput('rankNTB'),
+                                               uiOutput('rankNTBBatsmen'),
                                              ),
 
+                                             column(7, offset=4,
+                                                    tags$h5((tags$i("Designed and developed by Tinniam V Ganesh"))),
+                                                    tags$h5((tags$i("Jan 7,2021"))),
+                                                    tags$h6("Data source Cricsheet: http://cricsheet.org/"),
+                                                    tags$a(href="https://cran.r-project.org/web/packages/yorkr/index.html", " Based on R package yorkr")
+                                             )
+                                           )
+                                  ),
+                                  # Rank NTB Bowlers tab
+                                  tabPanel("Rank NTB Bowlers",
+
+                                           h4('Rank NTB Bowlers '),
+
+                                           sidebarPanel(
+                                             tags$head( tags$style( type = "text/css", '
+                                                    .js-irs-18 .irs-line-mid{
+                                                      background: #428bca ;
+                                                      border: 1px solid #428bca ;
+                                                    }
+                                                    .js-irs-18 .irs-line-right{
+                                                      background: #428bca ;
+                                                    }
+                                                    .js-irs-18 .irs-bar {
+                                                      background: linear-gradient(to bottom, #DDD -50%, #FFF 150%);
+                                                      border-top: 1px solid #CCC ;
+                                                      border-bottom: 1px solid #CCC ;
+                                                    }
+                                                    .js-irs-18 .irs-bar-edge {
+                                                      background: inherit ;
+                                                      border: inherit ;
+                                                    }
+                                                  ')),
+
+                                             sliderInput("yearSelected1NTB", "Since year",min = (helper2(NTBTeamNames,"./ntb/ntbBattingBowlingDetails")[[1]]), max = (helper2(NTBTeamNames,"./ntb/ntbBattingBowlingDetails")[[2]]), value = (helper2(NTBTeamNames,"./ntb/ntbBattingBowlingDetails")[[1]]), step = 1),
+                                             sliderInput("minMatches1NTB", "Matches played",min = (helper2(NTBTeamNames,"./ntb/ntbBattingBowlingDetails")[[3]]), max = (helper2(NTBTeamNames,"./ntb/ntbBattingBowlingDetails")[[4]]), value = 0, step = 1),
+                                             uiOutput("Mode1NTB")
+                                           ),
+                                           mainPanel(
+                                             shinycssloaders::withSpinner(
+                                               uiOutput('rankNTBBowlers'),
+                                             ),
                                              column(7, offset=4,
                                                     tags$h5((tags$i("Designed and developed by Tinniam V Ganesh"))),
                                                     tags$h5((tags$i("Jan 7,2021"))),

@@ -735,20 +735,48 @@ shinyServer(function(input, output,session) {
 
 
     # Display ranks
-    output$NTBRankPlayerPrint <- renderTable({
+    observeEvent(input$yearSelectedNTB,{
+      updateSliderInput(session, "minMatchesNTB", max = helper1(NTBTeamNames,input$yearSelectedNTB,"./ntb/ntbBattingBowlingDetails")[[4]],value = helper1(NTBTeamNames,input$yearSelectedNTB,"./ntb/ntbBattingBowlingDetails")[[4]]- 3)
+    })
+
+    # Analyze and display NTB Match table
+    output$NTBRankBatsmenPrint <- renderTable({
       Sys.sleep(1.5)
       plot(runif(10))
-      a <- rankPlayers(input, output,"NTB")
+      a <- rankPlayers(input, output,"NTB","batsmen")
       head(a,20)
-
     })
-    # Output either a table or a plot
-    output$rankNTB <-  renderUI({
-      # Check if output is a dataframe. If so, print
-      print(input$rankFuncNTB)
-      if(is.data.frame(rankPlayers(input, output,"NTB"))){
 
-        tableOutput("NTBRankPlayerPrint")
+    # Output either a table or a plot
+    output$rankNTBBatsmen <-  renderUI({
+      # Check if output is a dataframe. If so, print
+      if(is.data.frame(a <- rankPlayers(input, output,"NTB","batsmen"))){
+        tableOutput("NTBRankBatsmenPrint")
+
+      }
+    })
+
+    ########################################
+    # Rank NTB Bowlers
+    observeEvent(input$yearSelected1NTB,{
+      updateSliderInput(session, "minMatches1NTB", max = helper3(NTBTeamNames,input$yearSelected1NTB,"./ntb/ntbBattingBowlingDetails")[[4]],value = helper3(NTBTeamNames,input$yearSelected1NTB,"./ntb/ntbBattingBowlingDetails")[[4]]- 3)
+    })
+
+    # Analyze and display NTB Match table
+    output$NTBRankBowlersPrint <- renderTable({
+      Sys.sleep(1.5)
+      plot(runif(10))
+      a <- rankPlayers(input, output,"NTB","bowlers")
+      head(a,20)
+    })
+
+    # Output either a table or a plot
+    output$rankNTBBowlers <-  renderUI({
+      # Check if output is a dataframe. If so, print
+
+      if(is.data.frame(a <- rankPlayers(input, output,"NTB","bowlers"))){
+        tableOutput("NTBRankBowlersPrint")
+
       }
     })
 
