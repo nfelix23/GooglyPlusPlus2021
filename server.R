@@ -292,7 +292,7 @@ shinyServer(function(input, output,session) {
 
 
     observeEvent(input$yearSelectedT20M,{
-      updateSliderInput(session, "minMatchesT20M", max = helper1(T20MTeamNames,input$yearSelectedT20M,"./t20/t20BattingBowlingDetails")[[4]],value = helper1(T20MTeamNames,input$yearSelectedT20M,"./t20/t20BattingBowlingDetails")[[4]]- 20)
+      updateSliderInput(session, "minMatchesT20M", max = helper1(T20MTeamNames,input$yearSelectedT20M,"./t20/t20BattingBowlingDetails")[[4]],value = helper1(T20MTeamNames,input$yearSelectedT20M,"./t20/t20BattingBowlingDetails")[[4]]- 8)
     })
 
     # Analyze and display T20M Match table
@@ -315,7 +315,7 @@ shinyServer(function(input, output,session) {
     ########################################
     # Rank T20M Bowlers
     observeEvent(input$yearSelected1T20M,{
-      updateSliderInput(session, "minMatches1T20M", max = helper3(T20MTeamNames,input$yearSelected1T20M,"./t20/t20BattingBowlingDetails")[[4]],value = helper3(T20MTeamNames,input$yearSelected1T20M,"./t20/t20BattingBowlingDetails")[[4]]- 20)
+      updateSliderInput(session, "minMatches1T20M", max = helper3(T20MTeamNames,input$yearSelected1T20M,"./t20/t20BattingBowlingDetails")[[4]],value = helper3(T20MTeamNames,input$yearSelected1T20M,"./t20/t20BattingBowlingDetails")[[4]]- 8)
     })
 
     # Analyze and display T20M Match table
@@ -437,24 +437,51 @@ shinyServer(function(input, output,session) {
 
 
     ################################ Rank T20 Women ##############################
-    # Rank T20M Men performance
+    # Rank T20 WoMen performance
 
 
-    # Analyze and display T20 rank Match table
-    output$T20WRankPlayerPrint <- renderTable({
+    observeEvent(input$yearSelectedT20W,{
+      updateSliderInput(session, "minMatchesT20W", max = helper1(T20WTeamNames,input$yearSelectedT20W,"./t20/t20WomenBattingBowlingDetails")[[4]],value = helper1(T20WTeamNames,input$yearSelectedT20W,"./t20/t20WomenBattingBowlingDetails")[[4]]- 5)
+    })
+
+    # Analyze and display T20W Match table
+    output$T20WRankBatsmenPrint <- renderTable({
       Sys.sleep(1.5)
       plot(runif(10))
-      a <- rankPlayers(input, output,"T20W")
+      a <- rankPlayers(input, output,"T20W","batsmen")
       head(a,20)
-
     })
-    # Output either a table or a plot
-    output$rankT20W <-  renderUI({
-      # Check if output is a dataframe. If so, print
-      print(input$rankFuncT20W)
-      if(is.data.frame(rankPlayers(input, output,"T20W"))){
 
-        tableOutput("T20WRankPlayerPrint")
+    # Output either a table or a plot
+    output$rankT20WBatsmen <-  renderUI({
+      # Check if output is a dataframe. If so, print
+      if(is.data.frame(a <- rankPlayers(input, output,"T20W","batsmen"))){
+        tableOutput("T20WRankBatsmenPrint")
+
+      }
+    })
+
+    ########################################
+    # Rank T20 Women Bowlers
+    observeEvent(input$yearSelected1T20W,{
+      updateSliderInput(session, "minMatches1T20W", max = helper3(T20WTeamNames,input$yearSelected1T20W,"./t20/t20WomenBattingBowlingDetails")[[4]],value = helper3(T20WTeamNames,input$yearSelected1T20W,"./t20/t20WomenBattingBowlingDetails")[[4]]- 5)
+    })
+
+    # Analyze and display T20W Match table
+    output$T20WRankBowlersPrint <- renderTable({
+      Sys.sleep(1.5)
+      plot(runif(10))
+      a <- rankPlayers(input, output,"T20W","bowlers")
+      head(a,20)
+    })
+
+    # Output either a table or a plot
+    output$rankT20WBowlers <-  renderUI({
+      # Check if output is a dataframe. If so, print
+
+      if(is.data.frame(a <- rankPlayers(input, output,"T20W","bowlers"))){
+        tableOutput("T20WRankBowlersPrint")
+
       }
     })
 

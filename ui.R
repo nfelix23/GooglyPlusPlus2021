@@ -352,9 +352,9 @@ shinyUI(fluidPage(
 
                                          ),
                                          # Rank T20 Men  tab
-                                         tabPanel("Rank T20 Batsmen (men)",
+                                         tabPanel("Rank Intl. T20 Batsmen (men)",
 
-                                            h4('Rank T20 Batsmen (men)'),
+                                            h4('Rank Intl. T20 Batsmen (men)'),
 
                                             sidebarPanel(
                                             tags$head( tags$style( type = "text/css", '
@@ -397,14 +397,12 @@ shinyUI(fluidPage(
                                                   )
                                          ),
                                          # Rank T20 Bowlers(men) tab
-                                         tabPanel("Rank T20 Bowlers (men)",
+                                         tabPanel("Rank Intl. T20 Bowlers (men)",
 
-                                                  h4('Rank T20M Bowlers'),
+                                              h4('Rank Intl. T20 Bowlers (men)'),
 
-                                                  sidebarPanel(
-
-
-                                                    tags$head( tags$style( type = "text/css", '
+                                              sidebarPanel(
+                                              tags$head( tags$style( type = "text/css", '
                                               .js-irs-6 .irs-line-mid{
                                                 background: #428bca ;
                                                 border: 1px solid #428bca ;
@@ -423,14 +421,14 @@ shinyUI(fluidPage(
                                               }
                                             ')),
 
-                                                    sliderInput("yearSelected1T20M", "Since year",min = (helper2(T20MTeamNames,"./t20/t20BattingBowlingDetails")[[1]]), max = (helper2(T20MTeamNames,"./t20/t20BattingBowlingDetails")[[2]]), value = (helper2(T20MTeamNames,"./t20/t20BattingBowlingDetails")[[1]]), step = 1),
-                                                    sliderInput("minMatches1T20M", "Matches played",min = (helper2(T20MTeamNames,"./t20/t20BattingBowlingDetails")[[3]]), max = (helper2(T20MTeamNames,"./t20/t20BattingBowlingDetails")[[4]]), value = 0, step = 1),
-                                                    uiOutput("Mode1T20M")
-                                                  ),
-                                                  mainPanel(
-                                                    shinycssloaders::withSpinner(
-                                                      uiOutput('rankT20MBowlers'),
-                                                    ),
+                                              sliderInput("yearSelected1T20M", "Since year",min = (helper2(T20MTeamNames,"./t20/t20BattingBowlingDetails")[[1]]), max = (helper2(T20MTeamNames,"./t20/t20BattingBowlingDetails")[[2]]), value = (helper2(T20MTeamNames,"./t20/t20BattingBowlingDetails")[[1]]), step = 1),
+                                              sliderInput("minMatches1T20M", "Matches played",min = (helper2(T20MTeamNames,"./t20/t20BattingBowlingDetails")[[3]]), max = (helper2(T20MTeamNames,"./t20/t20BattingBowlingDetails")[[4]]), value = 0, step = 1),
+                                              uiOutput("Mode1T20M")
+                                            ),
+                                              mainPanel(
+                                                shinycssloaders::withSpinner(
+                                                  uiOutput('rankT20MBowlers'),
+                                                ),
                                                     column(7, offset=4,
                                                            tags$h5((tags$i("Designed and developed by Tinniam V Ganesh"))),
                                                            tags$h5((tags$i("Jan 7,2021"))),
@@ -555,20 +553,81 @@ shinyUI(fluidPage(
                                          ),
 
                                          # Rank T20 Women  tab
-                                         tabPanel("Rank Intl. T20 Women",
+                                         tabPanel("Rank Intl. T20 Batsmen (women)",
 
-                                                  h4('Rank Intl. T20  Women performances'),
+                                                h4('Rank Intl. T20 Batsmen (women)'),
 
-                                                  sidebarPanel(
-                                                    selectInput('rankFuncT20W', 'Select function', rankT20WPlayerFuncs),
-                                                    sliderInput("minMatchesT20W", "Minimum Matches:",
-                                                                min = 10, max = 50,
-                                                                value = 35),
+                                                sidebarPanel(
+                                                  tags$head( tags$style( type = "text/css", '
+                                                .js-irs-8 .irs-line-mid{
+                                                  background: #428bca ;
+                                                  border: 1px solid #428bca ;
+                                                }
+                                                .js-irs-8 .irs-line-right{
+                                                  background: #428bca ;
+                                                }
+                                                .js-irs-8 .irs-bar {
+                                                  background: linear-gradient(to bottom, #DDD -50%, #FFF 150%);
+                                                  border-top: 1px solid #CCC ;
+                                                  border-bottom: 1px solid #CCC ;
+                                                }
+                                                .js-irs-8 .irs-bar-edge {
+                                                  background: inherit ;
+                                                  border: inherit ;
+                                                }
+
+                                              ')),
+
+                                                    sliderInput("yearSelectedT20W", "Since year",min = (helper(T20WTeamNames,"./t20/t20WomenBattingBowlingDetails")[[1]]), max = (helper(T20WTeamNames,"./t20/t20WomenBattingBowlingDetails")[[2]]), value = (helper(T20WTeamNames,"./t20/t20WomenBattingBowlingDetails")[[1]]), step = 1),
+                                                    sliderInput("minMatchesT20W", "Matches played",min = (helper(T20WTeamNames,"./t20/t20WomenBattingBowlingDetails")[[3]]), max = (helper(T20WTeamNames,"./t20/t20WomenBattingBowlingDetails")[[4]]), value = 0, step = 1),
+                                                    uiOutput("ModeT20W")
 
                                                   ),
                                                   mainPanel(
                                                     shinycssloaders::withSpinner(
-                                                      uiOutput('rankT20W'),
+                                                      uiOutput('rankT20WBatsmen'),
+                                                    ),
+
+                                                    column(7, offset=4,
+                                                           tags$h5((tags$i("Designed and developed by Tinniam V Ganesh"))),
+                                                           tags$h5((tags$i("Jan 7,2021"))),
+                                                           tags$h6("Data source Cricsheet: http://cricsheet.org/"),
+                                                           tags$a(href="https://cran.r-project.org/web/packages/yorkr/index.html", " Based on R package yorkr")
+                                                    )
+                                                  )
+                                         ),
+                                         # Rank T20 Bowlers(women) tab
+                                         tabPanel("Rank Intl. T20 Bowlers (women)",
+
+                                                  h4('Rank Intl. T20 Bowlers (women)'),
+
+                                                  sidebarPanel(
+                                                    tags$head( tags$style( type = "text/css", '
+                                                    .js-irs-10 .irs-line-mid{
+                                                      background: #428bca ;
+                                                      border: 1px solid #428bca ;
+                                                    }
+                                                    .js-irs-10 .irs-line-right{
+                                                      background: #428bca ;
+                                                    }
+                                                    .js-irs-10 .irs-bar {
+                                                      background: linear-gradient(to bottom, #DDD -50%, #FFF 150%);
+                                                      border-top: 1px solid #CCC ;
+                                                      border-bottom: 1px solid #CCC ;
+                                                    }
+                                                    .js-irs-10 .irs-bar-edge {
+                                                      background: inherit ;
+                                                      border: inherit ;
+                                                    }
+                                                  ')),
+
+                                                    sliderInput("yearSelected1T20W", "Since year",min = (helper2(T20WTeamNames,"./t20/t20WomenBattingBowlingDetails")[[1]]), max = (helper2(T20WTeamNames,"./t20/t20WomenBattingBowlingDetails")[[2]]), value = (helper2(T20WTeamNames,"./t20/t20WomenBattingBowlingDetails")[[1]]), step = 1),
+                                                    sliderInput("minMatches1T20W", "Matches played",min = (helper2(T20WTeamNames,"./t20/t20WomenBattingBowlingDetails")[[3]]), max = (helper2(T20WTeamNames,"./t20/t20WomenBattingBowlingDetails")[[4]]), value = 0, step = 1),
+                                                    uiOutput("Mode1T20W")
+                                                  ),
+                                                  mainPanel(
+                                                    shinycssloaders::withSpinner(
+                                                      uiOutput('rankT20WBowlers'),
                                                     ),
                                                     column(7, offset=4,
                                                            tags$h5((tags$i("Designed and developed by Tinniam V Ganesh"))),

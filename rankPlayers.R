@@ -30,9 +30,19 @@ rankPlayers <- function(input,output,type="IPL",player="batsmen") {
         selectInput('wicketsOverERT20M', 'Mode1T20M',choices=wicketsVsER,selected=input$wicketsOverERT20M)
       })
 
+  } else if (type == "T20W"){
+    print("Here111")
+    output$ModeT20W <- renderUI({
+      selectInput('runsOverSRT20W', 'ModeT20W',choices=runsVsSR,selected=input$runsOverSRT20W)
+    })
+
+    output$Mode1T20W <- renderUI({
+      selectInput('wicketsOverERT20W', 'Mode1T20W',choices=wicketsVsER,selected=input$wicketsOverERT20W)
+    })
+
   }
 
-  cat("runs vs SR T20=",input$runsOverSRT20M)
+  cat("runs vs SR T20W=",input$runsOverSRT20W)
 
   if(type == "IPL"){
     if(player=="batsmen"){
@@ -45,17 +55,17 @@ rankPlayers <- function(input,output,type="IPL",player="batsmen") {
     }
   } else if (type ==  "T20M"){
     if(player=="batsmen"){
-      cat("runs vs SR T20=",input$runsOverSRT20M,"\n")
       a <- rankT20Batsmen(T20MTeamNames,"./t20/t20BattingBowlingDetails",input$minMatchesT20M,input$yearSelectedT20M,input$runsOverSRT20M)
     } else if (player =="bowlers"){
       a <-rankT20Bowlers(T20MTeamNames,"./t20/t20BattingBowlingDetails",input$minMatches1T20M, input$yearSelected1T20M,input$wicketsOverERT20M)
 
     }
   } else if (type ==  "T20W"){
-    if(input$rankFuncT20W == "Rank T20 batsmen (Women)"){
-      a <- rankT20Batsmen("./t20/t20WomenMatches","./t20/t20WomenBattingBowlingDetails",input$minMatchesT20W)
-    } else if (input$rankFuncT20W == "Rank T20 bowlers (Women)"){
-      a <- rankT20Bowlers("./t20/t20WomenMatches","./t20/t20WomenBattingBowlingDetails",input$minMatchesT20W)
+    if(player=="batsmen"){
+      cat("runs vs SR T20WW=",input$runsOverSRT20W,"\n")
+      a <- rankT20Batsmen(T20WTeamNames,"./t20/t20WomenBattingBowlingDetails",input$minMatchesT20W,input$yearSelectedT20W,input$runsOverSRT20W)
+    } else if (player =="bowlers"){
+      a <-rankT20Bowlers(T20WTeamNames,"./t20/t20WomenBattingBowlingDetails",input$minMatches1T20W, input$yearSelected1T20W,input$wicketsOverERT20W)
 
     }
   } else if (type ==  "BBL"){
