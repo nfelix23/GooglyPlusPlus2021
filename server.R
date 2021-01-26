@@ -288,24 +288,51 @@ shinyServer(function(input, output,session) {
 
 
     ################################ Rank T20 Men ##############################
-    # Rank T20M Men performance
+    # Rank T20M batsmen performance
 
 
-    # Analyze and display IPL Match table
-    output$T20MRankPlayerPrint <- renderTable({
+    observeEvent(input$yearSelectedT20M,{
+      updateSliderInput(session, "minMatchesT20M", max = helper1(T20MTeamNames,input$yearSelectedT20M,"./t20/t20BattingBowlingDetails")[[4]],value = helper1(T20MTeamNames,input$yearSelectedT20M,"./t20/t20BattingBowlingDetails")[[4]]- 20)
+    })
+
+    # Analyze and display T20M Match table
+    output$T20MRankBatsmenPrint <- renderTable({
       Sys.sleep(1.5)
       plot(runif(10))
-      a <- rankPlayers(input, output,"T20M")
+      a <- rankPlayers(input, output,"T20M","batsmen")
       head(a,20)
-
     })
-    # Output either a table or a plot
-    output$rankT20M <-  renderUI({
-      # Check if output is a dataframe. If so, print
-      print(input$rankFuncT20M)
-      if(is.data.frame(rankPlayers(input, output,"T20M"))){
 
-        tableOutput("T20MRankPlayerPrint")
+    # Output either a table or a plot
+    output$rankT20MBatsmen <-  renderUI({
+      # Check if output is a dataframe. If so, print
+      if(is.data.frame(a <- rankPlayers(input, output,"T20M","batsmen"))){
+        tableOutput("T20MRankBatsmenPrint")
+
+      }
+    })
+
+    ########################################
+    # Rank T20M Bowlers
+    observeEvent(input$yearSelected1T20M,{
+      updateSliderInput(session, "minMatches1T20M", max = helper3(T20MTeamNames,input$yearSelected1T20M,"./t20/t20BattingBowlingDetails")[[4]],value = helper3(T20MTeamNames,input$yearSelected1T20M,"./t20/t20BattingBowlingDetails")[[4]]- 20)
+    })
+
+    # Analyze and display T20M Match table
+    output$T20MRankBowlersPrint <- renderTable({
+      Sys.sleep(1.5)
+      plot(runif(10))
+      a <- rankPlayers(input, output,"T20M","bowlers")
+      head(a,20)
+    })
+
+    # Output either a table or a plot
+    output$rankT20MBowlers <-  renderUI({
+      # Check if output is a dataframe. If so, print
+
+      if(is.data.frame(a <- rankPlayers(input, output,"T20M","bowlers"))){
+        tableOutput("T20MRankBowlersPrint")
+
       }
     })
 

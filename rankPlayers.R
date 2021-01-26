@@ -7,34 +7,7 @@
 # More details: https://gigadom.in/
 #
 #########################################################################################################
-#rankPlayers <- function(input,output,type="IPL") {
-#  cat("Entering rank match\n")
-#  cat("Dir=====",getwd(),"\n")
-  # if (type == "IPL"){
-  #   cat("Dir1=====",getwd())
-  #   output$Years <- renderUI({
-  #     if (input$rankFuncIPL == "Rank IPL batsmen"){
-  #       sliderInput("year", "Since year",min = (helper(IPLTeamNames,"./ipl/iplBattingBowlingDetails")[[1]]), max = (helper(IPLTeamNames,"./ipl/iplBattingBowlingDetails")[[2]]), value = (helper(IPLTeamNames,"./ipl/iplBattingBowlingDetails")[[1]]), step = 1)
-  #     }
-  #   })
-  #
-  #   output$MinMatches <- renderUI({
-  #     if (input$rankFuncIPL == "Rank IPL batsmen"){
-  #       sliderInput("minMatches", "Matches played",min = (helper(IPLTeamNames,"./ipl/iplBattingBowlingDetails")[[3]]), max = (helper(IPLTeamNames,"./ipl/iplBattingBowlingDetails")[[4]]), value = 0, step = 1)
-  #     }
-  #   })
 
-  #   #cat("years ****=",input$year,"\n")
-  #   output$Mode <- renderUI({
-  #       if (input$rankFuncIPL == "Rank IPL batsmen"){
-  #         selectInput('runsOverSR', 'Mode', runsVsSR)
-  #       } else if (input$rankFuncIPL == "Rank IPL bowlers"){
-  #         selectInput('wicketsOverER', 'Mode', wicketsVsER)
-  #       }
-  #    })
-  #
-  #
-  # }
 
 rankPlayers <- function(input,output,type="IPL",player="batsmen") {
   cat("Entering rank Players\n")
@@ -45,18 +18,25 @@ rankPlayers <- function(input,output,type="IPL",player="batsmen") {
     })
 
     output$Mode1 <- renderUI({
-      selectInput('wicketsOverER', 'Mode',choices=wicketsVsER,selected=input$wicketsOverER)
+      selectInput('wicketsOverER', 'Mode1',choices=wicketsVsER,selected=input$wicketsOverER)
     })
+  } else if (type == "T20M"){
+    print("T20M")
+      output$ModeT20M <- renderUI({
+        selectInput('runsOverSRT20M', 'ModeT20M',choices=runsVsSR,selected=input$runsOverSRT20M)
+      })
 
+      output$Mode1T20M <- renderUI({
+        selectInput('wicketsOverERT20M', 'Mode1T20M',choices=wicketsVsER,selected=input$wicketsOverERT20M)
+      })
 
   }
 
-
+  cat("runs vs SR T20=",input$runsOverSRT20M)
 
   if(type == "IPL"){
     if(player=="batsmen"){
       cat("year=",input$yearSelected," minMatches=",input$minMatches, "\n")
-
       a <-rankIPLBatsmen("./ipl/iplBattingBowlingDetails",input$minMatches, input$yearSelected,input$runsOverSR)
     } else if (player =="bowlers"){
       cat("year1=",input$yearSelected1," minMatches1=",input$minMatches1, "\n")
@@ -64,10 +44,11 @@ rankPlayers <- function(input,output,type="IPL",player="batsmen") {
 
     }
   } else if (type ==  "T20M"){
-    if(input$rankFuncT20M == "Rank T20 batsmen (Men)"){
-      a <- rankT20Batsmen("./t20/t20MenMatches","./t20/t20BattingBowlingDetails",input$minMatchesT20M)
-    } else if (input$rankFuncT20M == "Rank T20 bowlers (Men)"){
-      a <-rankT20Bowlers("./t20/t20MenMatches","./t20/t20BattingBowlingDetails",input$minMatchesT20M)
+    if(player=="batsmen"){
+      cat("runs vs SR T20=",input$runsOverSRT20M,"\n")
+      a <- rankT20Batsmen(T20MTeamNames,"./t20/t20BattingBowlingDetails",input$minMatchesT20M,input$yearSelectedT20M,input$runsOverSRT20M)
+    } else if (player =="bowlers"){
+      a <-rankT20Bowlers(T20MTeamNames,"./t20/t20BattingBowlingDetails",input$minMatches1T20M, input$yearSelected1T20M,input$wicketsOverERT20M)
 
     }
   } else if (type ==  "T20W"){
