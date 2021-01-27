@@ -26,6 +26,7 @@ source("BBLutilities.R")
 source("NTButilities.R")
 source("PSLutilities.R")
 source("WBButilities.R")
+source("CPLutilities.R")
 #source("ODIMutilities.R")
 #source("ODIWutilities.R")
 source("analyzeBatsmen.R")
@@ -1271,6 +1272,156 @@ shinyServer(function(input, output,session) {
         plotOutput("ODIWTeamPerfOverallPlot")
       }
 
+    })
+
+
+    ############################################################Caribbean Premier League ##############################
+
+
+    # Analyze and display batsmen plots
+    output$batsmanPlotCPL <- renderPlot({
+      analyzeBatsmen(input$batsmanCPL,input$batsmanFuncCPL, "CPL")
+
+    })
+
+    # Analyze and display bowler plots
+    output$bowlerPlotCPL <- renderPlot({
+      analyzeBowlers(input$bowlerCPL,input$bowlerFuncCPL, "CPL")
+
+    })
+
+    ########################################  CPL T20 Match  #############################################
+    # Analyze and display T20 Match plot
+    output$CPLMatchPlot <- renderPlot({
+      print("t20 plot")
+      printOrPlotMatch(input, output,"CPL")
+
+    })
+
+    # Analyze and display T20 Match table
+    output$CPLMatchPrint <- renderTable({
+      print("t20 print")
+      a <- printOrPlotMatch(input, output,"CPL")
+      head(a)
+      a
+
+    })
+    # Output either a table or a plot
+    output$plotOrPrintCPLMatch <-  renderUI({
+      # Check if output is a dataframe. If so, print
+      if(is.data.frame(scorecard <- printOrPlotMatch(input, output,"CPL"))){
+        print("Hello&&&&&&&&&&&&&&&")
+        tableOutput("CPLMatchPrint")
+      }
+      else{ #Else plot
+        plotOutput("CPLMatchPlot")
+      }
+
+    })
+
+    #################################### CPL  Matches between 2 teams ######################
+    # Analyze Head to head confrontation of CPL T20  teams
+
+    # Analyze and display CPL T20  Matches between 2 teams plot
+    output$CPLMatch2TeamsPlot <- renderPlot({
+      print("Women plot")
+      printOrPlotMatch2Teams(input, output,"CPL")
+
+    })
+
+    # Analyze and display CPL Match table
+    output$CPLMatch2TeamsPrint <- renderTable({
+      print("Women table")
+      a <- printOrPlotMatch2Teams(input, output,"CPL")
+      a
+    })
+
+    # Output either a table or a plot
+    output$plotOrPrintCPLMatch2teams <-  renderUI({
+      print("Women's match ")
+      # Check if output is a dataframe. If so, print
+      if(is.data.frame(scorecard <- printOrPlotMatch2Teams(input, output,"CPL"))){
+        tableOutput("CPLMatch2TeamsPrint")
+      }
+      else{ #Else plot
+        plotOutput("CPLMatch2TeamsPlot")
+      }
+
+    })
+
+    ################################ CPL T20  Teams's overall performance ##############################
+    # Analyze overall CPL  team performance plots
+    output$CPLTeamPerfOverallPlot <- renderPlot({
+      printOrPlotTeamPerfOverall(input, output,"CPL")
+
+    })
+
+    # Analyze and display IPL Match table
+    output$CPLTeamPerfOverallPrint <- renderTable({
+      a <- printOrPlotTeamPerfOverall(input, output,"CPL")
+      a
+
+    })
+    # Output either a table or a plot
+    output$printOrPlotCPLTeamPerfoverall <-  renderUI({
+      # Check if output is a dataframe. If so, print
+      if(is.data.frame(scorecard <- printOrPlotTeamPerfOverall(input, output,"CPL"))){
+        tableOutput("CPLTeamPerfOverallPrint")
+      }
+      else{ #Else plot
+        plotOutput("CPLTeamPerfOverallPlot")
+      }
+
+    })
+
+
+    ################################ Rank CPL ##############################
+
+
+    # Display ranks
+    observeEvent(input$yearSelectedCPL,{
+      updateSliderInput(session, "minMatchesCPL", max = helper1(CPLTeamNames,input$yearSelectedCPL,"./cpl/cplBattingBowlingDetails")[[4]],value = helper1(CPLTeamNames,input$yearSelectedCPL,"./cpl/cplBattingBowlingDetails")[[4]]- 8)
+    })
+
+    # Analyze and display CPL Match table
+    output$CPLRankBatsmenPrint <- renderTable({
+      Sys.sleep(1.5)
+      plot(runif(10))
+      a <- rankPlayers(input, output,"CPL","batsmen")
+      head(a,20)
+    })
+
+    # Output either a table or a plot
+    output$rankCPLBatsmen <-  renderUI({
+      # Check if output is a dataframe. If so, print
+      if(is.data.frame(a <- rankPlayers(input, output,"CPL","batsmen"))){
+        tableOutput("CPLRankBatsmenPrint")
+
+      }
+    })
+
+    ########################################
+    # Rank CPL Bowlers
+    observeEvent(input$yearSelected1CPL,{
+      updateSliderInput(session, "minMatches1CPL", max = helper3(CPLTeamNames,input$yearSelected1CPL,"./cpl/cplBattingBowlingDetails")[[4]],value = helper3(CPLTeamNames,input$yearSelected1CPL,"./cpl/cplBattingBowlingDetails")[[4]]- 8)
+    })
+
+    # Analyze and display CPL Match table
+    output$CPLRankBowlersPrint <- renderTable({
+      Sys.sleep(1.5)
+      plot(runif(10))
+      a <- rankPlayers(input, output,"CPL","bowlers")
+      head(a,20)
+    })
+
+    # Output either a table or a plot
+    output$rankCPLBowlers <-  renderUI({
+      # Check if output is a dataframe. If so, print
+
+      if(is.data.frame(a <- rankPlayers(input, output,"CPL","bowlers"))){
+        tableOutput("CPLRankBowlersPrint")
+
+      }
     })
 
 

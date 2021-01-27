@@ -1,6 +1,6 @@
 #########################################################################################################
 #
-# Title :  GooglyPlusPLus - An interactive app to analyze T20 and ODI matches 
+# Title :  GooglyPlusPLus - An interactive app to analyze T20 and ODI matches
 # Designed and developed by: Tinniam V Ganesh
 # Date : 28 Jun 2020
 # File: analyzeMatches.R
@@ -22,53 +22,58 @@ analyzeMatches <- function(match,matchFunc,plotOrTable,team,opposition,t20type) 
         T20Mmatch <- paste("./t20/t20MenMatches/", match,".RData",sep="")
         cat("analymatch=",getwd())
         load(T20Mmatch)
-        matchDF <- overs  
+        matchDF <- overs
 
     } else if (t20type == "T20W"){
         T20Wmatch <- paste("./t20/t20WomenMatches/", match,".RData",sep="")
         cat("analymatchmen Wo=",getwd())
         load(T20Wmatch)
-        matchDF <- overs  
-        
+        matchDF <- overs
+
     } else if (t20type == "BBL"){
         BBLmatch <- paste("./bbl/bblMatches/", match,".RData",sep="")
         cat("analymatchmen BBL=",getwd())
         load(BBLmatch)
-        matchDF <- overs  
-        
+        matchDF <- overs
+
     } else if (t20type == "NTB"){
         NTBmatch <- paste("./ntb/ntbMatches/", match,".RData",sep="")
         cat("analymatchmen NTB=",getwd())
         load(NTBmatch)
-        matchDF <- overs  
-        
+        matchDF <- overs
+
     } else if (t20type == "PSL"){
         PSLmatch <- paste("./psl/pslMatches/", match,".RData",sep="")
         cat("analymatchmen PSL=",getwd())
         load(PSLmatch)
-        matchDF <- overs  
-        
+        matchDF <- overs
+
     } else if (t20type == "WBB"){
         WBBmatch <- paste("./wbb/wbbMatches/", match,".RData",sep="")
         cat("analymatchmen WBB=",getwd())
         load(WBBmatch)
-        matchDF <- overs  
-        
+        matchDF <- overs
+
     } else if (t20type == "ODIM"){
         ODIMmatch <- paste("./odi/odiMenMatches/", match,".RData",sep="")
         cat("analymatchmen ODIM=",getwd())
         load(ODIMmatch)
-        matchDF <- overs  
-        
+        matchDF <- overs
+
     } else if (t20type == "ODIW"){
         ODIWmatch <- paste("./odi/odiWomenMatches/", match,".RData",sep="")
         cat("analymatchmen ODIW=",getwd())
         load(ODIWmatch)
-        matchDF <- overs  
-        
+        matchDF <- overs
+
+    } else if(t20type == "CPL"){
+        CPLmatch <- paste("./cpl/cplMatches/", match,".RData",sep="")
+        cat("analymatch=",getwd())
+        load(CPLmatch)
+        matchDF <- overs
     }
 
-    cat("dim(match=",dim(matchDF),"\n")    
+    cat("dim(match=",dim(matchDF),"\n")
     print(team)
     if(plotOrTable == 1){
         val=TRUE
@@ -85,7 +90,7 @@ analyzeMatches <- function(match,matchFunc,plotOrTable,team,opposition,t20type) 
     } else if (matchFunc == "Batsmen vs Bowlers"){
         teamBatsmenVsBowlersMatch(matchDF,team,opposition,plot=val)
     }  else if (matchFunc == "Match Bowling Scorecard"){
-        teamBowlingScorecardMatch(matchDF,team)    
+        teamBowlingScorecardMatch(matchDF,team)
     } else if (matchFunc == "Bowling Wicket Kind"){
         teamBowlingWicketKindMatch(matchDF,team,opposition, plot=val)
     } else if (matchFunc == "Bowling Wicket Runs"){
@@ -98,6 +103,6 @@ analyzeMatches <- function(match,matchFunc,plotOrTable,team,opposition,t20type) 
         matchWormGraph(matchDF,team,opposition)
     }
 
-    
+
 }
 

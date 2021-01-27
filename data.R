@@ -1,8 +1,8 @@
 #####################################################################################################
 #
-# Title :  GooglyPlusPLus - An interactive app to analyze T20 and ODI matches 
+# Title :  GooglyPlusPLus - An interactive app to analyze T20 and ODI matches
 # Designed and developed by: Tinniam V Ganesh
-# Date : 28 Jun 2020
+# Date : 27 Jan 2021
 # File: data.R
 # More details: https://gigadom.in/
 #
@@ -29,7 +29,7 @@ IPLTeamNames <- list("Chennai Super Kings","Deccan Chargers","Delhi Capitals", "
                      "Kings XI Punjab", 'Kochi Tuskers Kerala',"Kolkata Knight Riders",
                      "Mumbai Indians", "Pune Warriors","Rajasthan Royals",
                      "Royal Challengers Bangalore","Sunrisers Hyderabad","Gujarat Lions",
-                     "Rising Pune Supergiants")   
+                     "Rising Pune Supergiants")
 
 ############################################
 #T20 Men
@@ -197,6 +197,29 @@ WBBTeamNames <- list("Adelaide Strikers", "Brisbane Heat", "Hobart Hurricanes",
                      "Melbourne Renegades", "Melbourne Stars", "Perth Scorchers", "Sydney Sixers",
                      "Sydney Thunder")
 
+#########################################
+# CPL
+load("./cpl/cplBattingBowlingDetails/CPLbatsmen.RData")
+CPLBatsmen <-cplBatsmen
+cat("lengthbatsCPL=",length(CPLBatsmen),"\n")
+
+load("./cpl/cplBattingBowlingDetails/CPLbowlers.RData")
+CPLBowlers <-cplBowlers
+
+a <-list.files("./cpl/cplMatches/")
+CPLMatches <- gsub(".RData","",a)
+cat("length=",length(CPLMatches),"\n")
+
+a1 <-list.files("./cpl/cplMatches2Teams/")
+CPLMatches2Teams <- gsub(".RData","",a1)
+
+a2 <-list.files("./cpl/cplAllMatchesAllTeams/")
+CPLTeamsAll <- gsub(".RData","",a2)
+
+# CPL Team names
+CPLTeamNames <- list("Antigua Hawksbills","Barbados Tridents","Guyana Amazon Warriors","Jamaica Tallawahs",
+                       "St Kitts and Nevis Patriots","St Lucia Zouks","Trinbago Knight Riders")
+
 
 # ############################################
 #ODI Men
@@ -204,20 +227,20 @@ WBBTeamNames <- list("Adelaide Strikers", "Brisbane Heat", "Hobart Hurricanes",
 # load("./odi/odiBattingBowlingDetails/ODIMbatsmen.RData")
 # ODIMBatsmen <-odimBatsmen
 # cat("lengthbatsm=",length(ODIMBatsmen),"\n")
-# 
+#
 # load("./odi/odiBattingBowlingDetails/ODIMbowlers.RData")
 # ODIMBowlers <-odimBowlers
-# 
+#
 # a <-list.files("./odi/odiMenMatches/")
 # ODIMMatches <- gsub(".RData","",a)
 # cat("length=",length(ODIMMatches),"\n")
-# 
+#
 # a1 <-list.files("./odi/odiMatches2Teams/")
 # ODIMMatches2Teams <- gsub(".RData","",a1)
-# 
+#
 # a2 <-list.files("./odi/odiAllMatchesAllTeams/")
 # ODIMTeamsAll <- gsub(".RData","",a2)
-# 
+#
 # # odi Men Team names
 # ODIMTeamNames <- list("Australia","India","Pakistan","West Indies", 'Sri Lanka',
 #                       "England", "Bangladesh","Netherlands","Scotland", "Afghanistan",
@@ -232,21 +255,21 @@ WBBTeamNames <- list("Adelaide Strikers", "Brisbane Heat", "Hobart Hurricanes",
 # load("./odi/odiWomenBattingBowlingDetails/ODIWbatsmen.RData")
 # ODIWBatsmen <-odiwBatsmen
 # cat("lengthbatsm=",length(ODIWBatsmen),"\n")
-# 
+#
 # load("./odi/odiWomenBattingBowlingDetails/ODIWbowlers.RData")
 # ODIWBowlers <-odiwBowlers
-# 
+#
 # a <-list.files("./odi/odiWomenMatches/")
 # ODIWMatches <- gsub(".RData","",a)
 # cat("length=",length(ODIWMatches),"\n")
-# 
+#
 # a1 <-list.files("./odi/odiWomenMatches2Teams/")
 # ODIWMatches2Teams <- gsub(".RData","",a1)
-# 
+#
 # a2 <-list.files("./odi/odiWomenAllMatchesAllTeams/")
 # ODIWTeamsAll <- gsub(".RData","",a2)
 # cat("All ODIW teams=",ODIWTeamsAll)
-# 
+#
 # # odi Men Team names
 # ODIWTeamNames <- list("Australia","India","Pakistan","West Indies", 'Sri Lanka',
 #                       "England", "Bangladesh",

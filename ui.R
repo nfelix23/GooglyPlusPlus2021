@@ -1440,6 +1440,207 @@ shinyUI(fluidPage(
 
                         )),
 
+    #############################Carribean Premier League T20 ################################
+    tabPanel("CPL T20",navbarPage("GooglyPlusPlus - Big Bash League T20",
+                                  # Batsman tab
+                                  tabPanel("CPL T20 batsman",
+                                           h4('Analyze CPL T20 batsman performances'),
+                                           sidebarPanel(
+                                             selectInput('batsmanFuncCPL', 'Select function', batsmanFuncs),
+                                             selectInput('batsmanCPL', 'Select batsman', CPLBatsmen,selectize=FALSE, size=20),
+                                           ),
+                                           mainPanel(
+                                             plotOutput('batsmanPlotCPL'),
+                                             column(7, offset=4,
+                                                    tags$h5((tags$i("Designed and developed by Tinniam V Ganesh"))),
+                                                    tags$h5((tags$i("Jan 7,2021"))),
+                                                    tags$h6("Data source Cricsheet: http://cricsheet.org/"),
+                                                    tags$a(href="https://cran.r-project.org/web/packages/yorkr/index.html", " Based on R package yorkr")
+                                             )
+                                           )
+                                  ),
+
+                                  # Bowlers tab
+                                  tabPanel("CPL bowlers",
+
+                                           h4('CPL bowler performances'),
+
+                                           sidebarPanel(
+                                             selectInput('bowlerFuncCPL', 'Select function', bowlerFuncs),
+                                             selectInput('bowlerCPL', 'Select T20 bowler', CPLBowlers,selectize=FALSE, size=20)
+
+
+                                           ),
+                                           mainPanel(
+                                             plotOutput('bowlerPlotCPL'),
+                                             column(7, offset=4,
+                                                    tags$h5((tags$i("Designed and developed by Tinniam V Ganesh"))),
+                                                    tags$h5((tags$i("Jan 7,2021"))),
+                                                    tags$h6("Data source Cricsheet: http://cricsheet.org/"),
+                                                    tags$a(href="https://cran.r-project.org/web/packages/yorkr/index.html", " Based on R package yorkr")
+                                             )
+                                           )
+
+                                  ),
+                                  tabPanel("CPL  Match",
+                                           h4('Analyze CPL T20 match'),
+                                           sidebarPanel(
+                                             selectInput('matchFuncCPL', 'Select match function', matchFuncs),
+                                             selectInput('matchCPL', 'Select CPL match ', CPLMatches,selectize=FALSE, size=15),
+                                             uiOutput("selectTeamCPL"),
+                                             radioButtons("plotOrTableCPL", label = h4("Plot or table"),
+                                                          choices = c("Plot" = 1, "Table" = 2),
+                                                          selected = 1,inline=T)
+
+                                           ),
+                                           mainPanel(
+                                             uiOutput("plotOrPrintCPLMatch"),
+                                             column(7, offset=4,
+                                                    tags$h5((tags$i("Designed and developed by Tinniam V Ganesh"))),
+                                                    tags$h5((tags$i("Jan 7,2021"))),
+                                                    tags$h6("Data source Cricsheet: http://cricsheet.org/"),
+                                                    tags$a(href="https://cran.r-project.org/web/packages/yorkr/index.html", " Based on R package yorkr")
+                                             )
+                                           )
+                                  ),
+                                  # Analyze Head-to-Head CPL  matches
+                                  tabPanel("Head to head",
+                                           h4('Head-to-head between CPL teams'),
+                                           sidebarPanel(
+                                             selectInput('matches2TeamFuncCPL', 'Select function', matches2TeamsFuncs),
+                                             selectInput('match2CPL', 'Select matches', CPLMatches2Teams,selectize=FALSE, size=13),
+                                             uiOutput("selectTeam2CPL"),
+                                             radioButtons("plotOrTable1CPL", label = h4("Plot or table"),
+                                                          choices = c("Plot" = 1, "Table" = 2),
+                                                          selected = 1,inline=T),
+                                             radioButtons("repTypeCPL", label = h4("Report Type"),
+                                                          choices = c("Summary" = 1, "Detailed" = 2),
+                                                          selected = 1,inline=T)
+
+                                           ),
+                                           mainPanel(
+                                             uiOutput("plotOrPrintCPLMatch2teams"),
+                                             column(7, offset=4,
+                                                    tags$h5((tags$i("Designed and developed by Tinniam V Ganesh"))),
+                                                    tags$h5((tags$i("Jan 7,2021"))),
+                                                    tags$h6("Data source Cricsheet: http://cricsheet.org/"),
+                                                    tags$a(href="https://cran.r-project.org/web/packages/yorkr/index.html", " Based on R package yorkr")
+                                             )
+                                           )
+
+                                  ),
+                                  # Analyze CPL T20 Team Overall Perf
+                                  tabPanel("Overall Performance",
+                                           h4("Analyze CPL team's overall performance"),
+                                           sidebarPanel(
+                                             selectInput('overallperfFuncCPL', 'Select function', teamOverallPerfFunc),
+                                             selectInput('teamMatchesCPL', 'Select the team', CPLTeamsAll,selectize=FALSE, size=13),
+                                             uiOutput("RankCPL"),
+                                             radioButtons("plotOrTable2CPL", label = h4("Plot or table"),
+                                                          choices = c("Plot" = 1, "Table" = 2),
+                                                          selected = 1,inline=T),
+                                             radioButtons("repType2CPL", label = h4("Report Type"),
+                                                          choices = c("Summary" = 1, "Detailed" = 2),
+                                                          selected = 1,inline=T)
+                                           ),
+                                           mainPanel(
+                                             uiOutput('printOrPlotCPLTeamPerfoverall'),
+                                             column(7, offset=4,
+                                                    tags$h5((tags$i("Designed and developed by Tinniam V Ganesh"))),
+                                                    tags$h5((tags$i("Jan 7,2021"))),
+                                                    tags$h6("Data source Cricsheet: http://cricsheet.org/"),
+                                                    tags$a(href="https://cran.r-project.org/web/packages/yorkr/index.html", " Based on R package yorkr")
+                                             )
+                                           )
+
+                                  ),
+                                  # Rank CPL Players tab
+                                  tabPanel("Rank  CPL Batsmen",
+
+                                           h4('Rank  CPL Batsmen '),
+
+                                           sidebarPanel(
+                                             tags$head( tags$style( type = "text/css", '
+                                                .js-irs-28 .irs-line-mid{
+                                                  background: #428bca ;
+                                                  border: 1px solid #428bca ;
+                                                }
+                                                .js-irs-28 .irs-line-right{
+                                                  background: #428bca ;
+                                                }
+                                                .js-irs-28 .irs-bar {
+                                                  background: linear-gradient(to bottom, #DDD -50%, #FFF 150%);
+                                                  border-top: 1px solid #CCC ;
+                                                  border-bottom: 1px solid #CCC ;
+                                                }
+                                                .js-irs-28 .irs-bar-edge {
+                                                  background: inherit ;
+                                                  border: inherit ;
+                                                }
+
+                                              ')),
+
+                                             sliderInput("yearSelectedCPL", "Since year",min = (helper(CPLTeamNames,"./cpl/cplBattingBowlingDetails")[[1]]), max = (helper(CPLTeamNames,"./cpl/cplBattingBowlingDetails")[[2]]), value = (helper(CPLTeamNames,"./cpl/cplBattingBowlingDetails")[[1]]), step = 1),
+                                             sliderInput("minMatchesCPL", "Matches played",min = (helper(CPLTeamNames,"./cpl/cplBattingBowlingDetails")[[3]]), max = (helper(CPLTeamNames,"./cpl/cplBattingBowlingDetails")[[4]]), value = 0, step = 1),
+                                             uiOutput("ModeCPL")
+
+                                           ),
+                                           mainPanel(
+                                             shinycssloaders::withSpinner(
+                                               uiOutput('rankCPLBatsmen'),
+                                             ),
+
+                                             column(7, offset=4,
+                                                    tags$h5((tags$i("Designed and developed by Tinniam V Ganesh"))),
+                                                    tags$h5((tags$i("Jan 7,2021"))),
+                                                    tags$h6("Data source Cricsheet: http://cricsheet.org/"),
+                                                    tags$a(href="https://cran.r-project.org/web/packages/yorkr/index.html", " Based on R package yorkr")
+                                             )
+                                           )
+                                  ),
+                                  # Rank CPL Bowlers tab
+                                  tabPanel("Rank CPL Bowlers",
+
+                                           h4('Rank CPL Bowlers '),
+
+                                           sidebarPanel(
+                                             tags$head( tags$style( type = "text/css", '
+                                                    .js-irs-30 .irs-line-mid{
+                                                      background: #428bca ;
+                                                      border: 1px solid #428bca ;
+                                                    }
+                                                    .js-irs-30 .irs-line-right{
+                                                      background: #428bca ;
+                                                    }
+                                                    .js-irs-30 .irs-bar {
+                                                      background: linear-gradient(to bottom, #DDD -50%, #FFF 150%);
+                                                      border-top: 1px solid #CCC ;
+                                                      border-bottom: 1px solid #CCC ;
+                                                    }
+                                                    .js-irs-30 .irs-bar-edge {
+                                                      background: inherit ;
+                                                      border: inherit ;
+                                                    }
+                                                  ')),
+
+                                             sliderInput("yearSelected1CPL", "Since year",min = (helper2(CPLTeamNames,"./cpl/cplBattingBowlingDetails")[[1]]), max = (helper2(CPLTeamNames,"./cpl/cplBattingBowlingDetails")[[2]]), value = (helper2(CPLTeamNames,"./cpl/cplBattingBowlingDetails")[[1]]), step = 1),
+                                             sliderInput("minMatches1CPL", "Matches played",min = (helper2(CPLTeamNames,"./cpl/cplBattingBowlingDetails")[[3]]), max = (helper2(CPLTeamNames,"./cpl/cplBattingBowlingDetails")[[4]]), value = 0, step = 1),
+                                             uiOutput("Mode1CPL")
+                                           ),
+                                           mainPanel(
+                                             shinycssloaders::withSpinner(
+                                               uiOutput('rankCPLBowlers'),
+                                             ),
+                                             column(7, offset=4,
+                                                    tags$h5((tags$i("Designed and developed by Tinniam V Ganesh"))),
+                                                    tags$h5((tags$i("Jan 7,2021"))),
+                                                    tags$h6("Data source Cricsheet: http://cricsheet.org/"),
+                                                    tags$a(href="https://cran.r-project.org/web/packages/yorkr/index.html", " Based on R package yorkr")
+                                             )
+                                           )
+                                  )
+                      )),
+
     ############################# ODI Men ################################
     # tabPanel("ODI Men",navbarPage("GooglyPlusPlus - One Day International (ODI) Men",
     #                                # Batsman tab
@@ -1675,7 +1876,7 @@ shinyUI(fluidPage(
     tabPanel("About GooglyPlusPlus 2021",h3("GooglyPlusPlus 2021 - Analyzing ODI,T20 Players, teams and matches with plots and tables"),
              p("This Shiny app is based on my R package 'yorkr'. In this Shiny app, I use  the
                     yorkr package to analyze the performances of cricketers,teams, matches."),
-             p("GooglyPlusPlus an handle ODI (men),ODI (women), Intl T20 (men), Intl T20 (women), IPL, BBL, NTB, PSL and Women BBL"),
+             p("GooglyPlusPlus an handle ODI (men),ODI (women), Intl T20 (men), Intl T20 (women), IPL, BBL, NTB, PSL,CPL and Women BBL"),
              p("The R package 'yorkr' has been authored by Tinniam V Ganesh for analyzing  performances of cricketers
                     teams, individudal match, head-to-head and overall team performances"),
              p("This Shiny app 'GooglyPlusPlus2021' has been designed and developed by  Tinniam V Ganesh,Jan 07,2021"),

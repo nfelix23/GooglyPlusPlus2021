@@ -64,32 +64,7 @@ teamOverallPerfFunc <- c("Team Batsmen Partnerships Overall",
                            "Team Bowler Wicket Kind Overall")
 
 
-# Rank IPL
-rankIPLPlayerFuncs <- c("Rank IPL batsmen",
-                        "Rank IPL bowlers")
 
-# Rank T20 (Men)
-rankT20MPlayerFuncs <- c("Rank T20 batsmen (Men)",
-                        "Rank T20 bowlers (Men)")
-# Rank T20 (Women)
-rankT20WPlayerFuncs <- c("Rank T20 batsmen (Women)",
-                         "Rank T20 bowlers (Women)")
-
-# Rank BBK
-rankBBLPlayerFuncs <- c("Rank BBL batsmen",
-                        "Rank BBL bowlers")
-
-# Rank NTB
-rankNTBPlayerFuncs <- c("Rank NTB batsmen",
-                        "Rank NTB bowlers")
-
-# Rank PSL
-rankPSLPlayerFuncs <- c("Rank PSL batsmen",
-                        "Rank PSL bowlers")
-
-# Rank WBB
-rankWBBPlayerFuncs <- c("Rank WBB batsmen",
-                        "Rank WBB bowlers")
 
 # Runs vs Strike Rate
 runsVsSR = c("Runs over SR", "SR over Runs")

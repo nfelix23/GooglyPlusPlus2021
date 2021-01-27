@@ -1,6 +1,6 @@
 #########################################################################################################
 #
-# Title :  GooglyPlusPLus - An interactive app to analyze T20 and ODI matches 
+# Title :  GooglyPlusPLus - An interactive app to analyze T20 and ODI matches
 # Designed and developed by: Tinniam V Ganesh
 # Date : 28 Jun 2020
 # File: analyzeBowlers.R
@@ -9,7 +9,7 @@
 #########################################################################################################
 # Analyze IPL bowlers
 analyzeBowlers <- function(bowler,func, t20type="IPL") {
-  
+
   # Return when name is NULL at start
   if(is.null(bowler))
     return()
@@ -17,7 +17,7 @@ analyzeBowlers <- function(bowler,func, t20type="IPL") {
     # Check and get the team indices of IPL teams in which the bowler has played
     cat("analBow=",getwd())
 
-    
+
     if(t20type == "IPL"){
       dir1="./ipl/iplBattingBowlingDetails/"
       # Check and get the team indices of IPL teams in which the batsman has played
@@ -81,11 +81,17 @@ analyzeBowlers <- function(bowler,func, t20type="IPL") {
       # Get the team names
       teamNames <- getODIWTeams(i)
       print(teamNames)
+    } else if(t20type == "CPL"){
+      dir1="./cpl/cplBattingBowlingDetails/"
+      # Check and get the team indices of IPL teams in which the batsman has played
+      i <- getCPLTeamIndex_bowler(bowler, dir1)
+      # Get the team names
+      teamNames <- getCPLTeams(i)
     }
-    
-    
+
+
     bowlerDF <- NULL
-    
+
     # Create a consolidated Data frame of batsman for all IPL teams played
     for (i in seq_along(teamNames)){
       tryCatch(df <- getBowlerWicketDetails(team=teamNames[i],name=bowler,dir=dir1),
@@ -95,9 +101,9 @@ analyzeBowlers <- function(bowler,func, t20type="IPL") {
               }
           )
           df <- getBowlerWicketDetails(team=teamNames[i],name=bowler,dir=dir1)
-          bowlerDF <- rbind(bowlerDF,df) 
+          bowlerDF <- rbind(bowlerDF,df)
     }
-    
+
     print(dim(bowlerDF))
     # Call the necessary function
     if(func == "Mean Economy Rate of bowler"){
@@ -120,13 +126,13 @@ analyzeBowlers <- function(bowler,func, t20type="IPL") {
         # This is for the function wicket predict
         bowlerDF1 <- NULL
         # Create a consolidated Data frame of batsman for all IPL teams played
-        for (i in seq_along(teamNames)){    
+        for (i in seq_along(teamNames)){
             # The below 2 lines for Bowler's wicket prediction
             df1 <- getDeliveryWickets(team=teamNames[i],dir="./IPLmatches",name=bowler,save=FALSE)
             bowlerDF1 <- rbind(bowlerDF1,df1)
         }
         bowlerWktsPredict(bowlerDF1,bowler)
-        
+
     }
 
 }
