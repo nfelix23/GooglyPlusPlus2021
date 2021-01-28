@@ -92,7 +92,7 @@ rankPlayers <- function(input,output,type="IPL",player="batsmen") {
 
   }
 
-  cat("runs vs SR T20W=",input$runsOverSRT20W)
+  cat("Rank players year selected=",input$yearSelected1,"input$minMatches1=", input$minMatches1,"input$wicketsOverER=",input$wicketsOverER)
 
   if(type == "IPL"){
     if(player=="batsmen"){
