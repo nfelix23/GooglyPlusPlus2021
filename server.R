@@ -135,7 +135,7 @@ shinyServer(function(input, output,session) {
     # Rank IPL Batsmen
 
     observeEvent(input$yearSelected,{
-      updateSliderInput(session, "minMatches", max = helper1(IPLTeamNames,input$yearSelected,"./ipl/iplBattingBowlingDetails")[[4]],value = helper1(IPLTeamNames,input$yearSelected,"./ipl/iplBattingBowlingDetails")[[4]]- 20)
+      updateSliderInput(session, "minMatches", max = helper1(IPLTeamNames,input$yearSelected,"./ipl/iplBattingBowlingDetails")[[4]],value = helper1(IPLTeamNames,input$yearSelected,"./ipl/iplBattingBowlingDetails")[[4]]- 12)
     })
 
     # Analyze and display IPL Match table
@@ -158,7 +158,7 @@ shinyServer(function(input, output,session) {
     ########################################
     # Rank IPL Bowlers
     observeEvent(input$yearSelected1,{
-      updateSliderInput(session, "minMatches1", max = helper3(IPLTeamNames,input$yearSelected1,"./ipl/iplBattingBowlingDetails")[[4]],value = helper3(IPLTeamNames,input$yearSelected1,"./ipl/iplBattingBowlingDetails")[[4]]- 20)
+      updateSliderInput(session, "minMatches1", max = helper3(IPLTeamNames,input$yearSelected1,"./ipl/iplBattingBowlingDetails")[[4]],value = helper3(IPLTeamNames,input$yearSelected1,"./ipl/iplBattingBowlingDetails")[[4]]- 12)
     })
 
     # Analyze and display IPL Match table

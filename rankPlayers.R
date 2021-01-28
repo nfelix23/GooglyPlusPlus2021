@@ -97,10 +97,10 @@ rankPlayers <- function(input,output,type="IPL",player="batsmen") {
   if(type == "IPL"){
     if(player=="batsmen"){
       cat("year=",input$yearSelected," minMatches=",input$minMatches, "\n")
-      a <-rankIPLBatsmen("./ipl/iplBattingBowlingDetails",input$minMatches, input$yearSelected,input$runsOverSR)
+      a <-rankT20Batsmen(IPLTeamNames,"./ipl/iplBattingBowlingDetails",input$minMatches, input$yearSelected,input$runsOverSR)
     } else if (player =="bowlers"){
       cat("year1=",input$yearSelected1," minMatches1=",input$minMatches1, "\n")
-      a <- rankIPLBowlers("./ipl/iplBattingBowlingDetails",input$minMatches1, input$yearSelected1,input$wicketsOverER)
+      a <- rankT20Bowlers(IPLTeamNames,"./ipl/iplBattingBowlingDetails",input$minMatches1, input$yearSelected1,input$wicketsOverER)
 
     }
   } else if (type ==  "T20M"){
