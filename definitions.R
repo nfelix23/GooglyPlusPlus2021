@@ -67,7 +67,7 @@ teamOverallPerfFunc <- c("Team Batsmen Partnerships Overall",
 
 
 # Runs vs Strike Rate
-runsVsSR = c("Runs over SR", "SR over Runs")
+runsVsSR = c("Runs over Strike rate", "Strike rate over Runs")
 
 # Wickets vs Economy Rate
-wicketsVsER = c("Wickets over ER", "ER over Wickets")
+wicketsVsER = c("Wickets over Economy rate", "Economy rate over Wickets")
