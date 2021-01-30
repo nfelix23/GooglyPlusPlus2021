@@ -167,11 +167,8 @@ shinyUI(fluidPage(
                                               }
 
                                             ')),
-                                            #uiOutput("yearsPlayed"),
-                                            #uiOutput("MinMatches"),
                                             sliderInput("yearSelected", "Since year",min = (helper(IPLTeamNames,"./ipl/iplBattingBowlingDetails")[[1]]), max = (helper(IPLTeamNames,"./ipl/iplBattingBowlingDetails")[[2]]), value = (helper(IPLTeamNames,"./ipl/iplBattingBowlingDetails")[[1]])),
                                             sliderInput("minMatches", "Matches played",min = (helper(IPLTeamNames,"./ipl/iplBattingBowlingDetails")[[3]]), max = (helper(IPLTeamNames,"./ipl/iplBattingBowlingDetails")[[4]]), value = 0),
-                                            #selectInput('runsOverSR', 'Mode', runsVsSR),
                                             uiOutput("Mode")
 
                                           ),

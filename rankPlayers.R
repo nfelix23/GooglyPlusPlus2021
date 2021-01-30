@@ -23,71 +23,71 @@ rankPlayers <- function(input,output,type="IPL",player="batsmen") {
   } else if (type == "T20M"){
     print("T20M")
       output$ModeT20M <- renderUI({
-        selectInput('runsOverSRT20M', 'ModeT20M',choices=runsVsSR,selected=input$runsOverSRT20M)
+        selectInput('runsOverSRT20M', 'Mode',choices=runsVsSR,selected=input$runsOverSRT20M)
       })
 
       output$Mode1T20M <- renderUI({
-        selectInput('wicketsOverERT20M', 'Mode1T20M',choices=wicketsVsER,selected=input$wicketsOverERT20M)
+        selectInput('wicketsOverERT20M', 'Mode1',choices=wicketsVsER,selected=input$wicketsOverERT20M)
       })
 
   } else if (type == "T20W"){
     print("Here111")
     output$ModeT20W <- renderUI({
-      selectInput('runsOverSRT20W', 'ModeT20W',choices=runsVsSR,selected=input$runsOverSRT20W)
+      selectInput('runsOverSRT20W', 'Mode',choices=runsVsSR,selected=input$runsOverSRT20W)
     })
 
     output$Mode1T20W <- renderUI({
-      selectInput('wicketsOverERT20W', 'Mode1T20W',choices=wicketsVsER,selected=input$wicketsOverERT20W)
+      selectInput('wicketsOverERT20W', 'Mode1',choices=wicketsVsER,selected=input$wicketsOverERT20W)
     })
 
   } else if (type == "BBL"){
     print("BBL")
     output$ModeBBL <- renderUI({
-      selectInput('runsOverSRBBL', 'ModeBBL',choices=runsVsSR,selected=input$runsOverSRBBL)
+      selectInput('runsOverSRBBL', 'Mode',choices=runsVsSR,selected=input$runsOverSRBBL)
     })
 
     output$Mode1BBL <- renderUI({
-      selectInput('wicketsOverERBBL', 'Mode1BBL',choices=wicketsVsER,selected=input$wicketsOverERBBL)
+      selectInput('wicketsOverERBBL', 'Mode1',choices=wicketsVsER,selected=input$wicketsOverERBBL)
     })
 
   } else if (type == "NTB"){
     print("NTB")
     output$ModeNTB <- renderUI({
-      selectInput('runsOverSRNTB', 'ModeNTB',choices=runsVsSR,selected=input$runsOverSRNTB)
+      selectInput('runsOverSRNTB', 'Mode',choices=runsVsSR,selected=input$runsOverSRNTB)
     })
 
     output$Mode1NTB <- renderUI({
-      selectInput('wicketsOverERNTB', 'Mode1NTB',choices=wicketsVsER,selected=input$wicketsOverERNTB)
+      selectInput('wicketsOverERNTB', 'Mode1',choices=wicketsVsER,selected=input$wicketsOverERNTB)
     })
 
   } else if (type == "PSL"){
     print("PSL")
     output$ModePSL <- renderUI({
-      selectInput('runsOverSRPSL', 'ModePSL',choices=runsVsSR,selected=input$runsOverSRPSL)
+      selectInput('runsOverSRPSL', 'Mode',choices=runsVsSR,selected=input$runsOverSRPSL)
     })
 
     output$Mode1PSL <- renderUI({
-      selectInput('wicketsOverERPSL', 'Mode1PSL',choices=wicketsVsER,selected=input$wicketsOverERPSL)
+      selectInput('wicketsOverERPSL', 'Mode1',choices=wicketsVsER,selected=input$wicketsOverERPSL)
     })
 
   } else if (type == "WBB"){
     print("WBB")
     output$ModeWBB <- renderUI({
-      selectInput('runsOverSRWBB', 'ModeWBB',choices=runsVsSR,selected=input$runsOverSRWBB)
+      selectInput('runsOverSRWBB', 'Mode',choices=runsVsSR,selected=input$runsOverSRWBB)
     })
 
     output$Mode1WBB <- renderUI({
-      selectInput('wicketsOverERWBB', 'Mode1WBB',choices=wicketsVsER,selected=input$wicketsOverERWBB)
+      selectInput('wicketsOverERWBB', 'Mode1',choices=wicketsVsER,selected=input$wicketsOverERWBB)
     })
 
   } else if (type == "CPL"){
     print("CPL")
     output$ModeCPL <- renderUI({
-      selectInput('runsOverSRCPL', 'ModeCPL',choices=runsVsSR,selected=input$runsOverSRCPL)
+      selectInput('runsOverSRCPL', 'Mode',choices=runsVsSR,selected=input$runsOverSRCPL)
     })
 
     output$Mode1CPL <- renderUI({
-      selectInput('wicketsOverERCPL', 'Mode1CPL',choices=wicketsVsER,selected=input$wicketsOverERCPL)
+      selectInput('wicketsOverERCPL', 'Mode1',choices=wicketsVsER,selected=input$wicketsOverERCPL)
     })
 
   }
