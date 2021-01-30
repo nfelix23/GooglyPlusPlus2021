@@ -167,7 +167,7 @@ shinyUI(fluidPage(
                                               }
 
                                             ')),
-                                            sliderInput("yearSelected", "Since year",min = (helper(IPLTeamNames,"./ipl/iplBattingBowlingDetails")[[1]]), max = (helper(IPLTeamNames,"./ipl/iplBattingBowlingDetails")[[2]]), value = (helper(IPLTeamNames,"./ipl/iplBattingBowlingDetails")[[1]])),
+                                            sliderInput("yearSelected", "Since year",min = (helper(IPLTeamNames,"./ipl/iplBattingBowlingDetails")[[1]])-1, max = (helper(IPLTeamNames,"./ipl/iplBattingBowlingDetails")[[2]]), value = (helper(IPLTeamNames,"./ipl/iplBattingBowlingDetails")[[1]])),
                                             sliderInput("minMatches", "Matches played",min = (helper(IPLTeamNames,"./ipl/iplBattingBowlingDetails")[[3]]), max = (helper(IPLTeamNames,"./ipl/iplBattingBowlingDetails")[[4]]), value = 0),
                                             uiOutput("Mode")
 
@@ -212,7 +212,7 @@ shinyUI(fluidPage(
                                               }
                                             ')),
 
-                                            sliderInput("yearSelected1", "Since year",min = (helper2(IPLTeamNames,"./ipl/iplBattingBowlingDetails")[[1]]), max = (helper2(IPLTeamNames,"./ipl/iplBattingBowlingDetails")[[2]]), value = (helper2(IPLTeamNames,"./ipl/iplBattingBowlingDetails")[[1]])),
+                                            sliderInput("yearSelected1", "Since year",min = (helper2(IPLTeamNames,"./ipl/iplBattingBowlingDetails")[[1]])-1, max = (helper2(IPLTeamNames,"./ipl/iplBattingBowlingDetails")[[2]]), value = (helper2(IPLTeamNames,"./ipl/iplBattingBowlingDetails")[[1]])),
                                             sliderInput("minMatches1", "Matches played",min = (helper2(IPLTeamNames,"./ipl/iplBattingBowlingDetails")[[3]]), max = (helper2(IPLTeamNames,"./ipl/iplBattingBowlingDetails")[[4]]), value = 0),
                                             #selectInput('runsOverSR', 'Mode', runsVsSR),
                                             uiOutput("Mode1")
@@ -376,7 +376,7 @@ shinyUI(fluidPage(
                                             ')),
                                                     #uiOutput("yearsPlayed"),
                                                     #uiOutput("MinMatches"),
-                                                    sliderInput("yearSelectedT20M", "Since year",min = (helper(T20MTeamNames,"./t20/t20BattingBowlingDetails")[[1]]), max = (helper(T20MTeamNames,"./t20/t20BattingBowlingDetails")[[2]]), value = (helper(T20MTeamNames,"./t20/t20BattingBowlingDetails")[[1]])),
+                                                    sliderInput("yearSelectedT20M", "Since year",min = (helper(T20MTeamNames,"./t20/t20BattingBowlingDetails")[[1]])-1, max = (helper(T20MTeamNames,"./t20/t20BattingBowlingDetails")[[2]]), value = (helper(T20MTeamNames,"./t20/t20BattingBowlingDetails")[[1]])),
                                                     sliderInput("minMatchesT20M", "Matches played",min = (helper(T20MTeamNames,"./t20/t20BattingBowlingDetails")[[3]]), max = (helper(T20MTeamNames,"./t20/t20BattingBowlingDetails")[[4]]), value = 0),
                                                     uiOutput("ModeT20M")
 
@@ -419,7 +419,7 @@ shinyUI(fluidPage(
                                               }
                                             ')),
 
-                                              sliderInput("yearSelected1T20M", "Since year",min = (helper2(T20MTeamNames,"./t20/t20BattingBowlingDetails")[[1]]), max = (helper2(T20MTeamNames,"./t20/t20BattingBowlingDetails")[[2]]), value = (helper2(T20MTeamNames,"./t20/t20BattingBowlingDetails")[[1]])),
+                                              sliderInput("yearSelected1T20M", "Since year",min = (helper2(T20MTeamNames,"./t20/t20BattingBowlingDetails")[[1]])-1, max = (helper2(T20MTeamNames,"./t20/t20BattingBowlingDetails")[[2]]), value = (helper2(T20MTeamNames,"./t20/t20BattingBowlingDetails")[[1]])),
                                               sliderInput("minMatches1T20M", "Matches played",min = (helper2(T20MTeamNames,"./t20/t20BattingBowlingDetails")[[3]]), max = (helper2(T20MTeamNames,"./t20/t20BattingBowlingDetails")[[4]]), value = 0),
                                               uiOutput("Mode1T20M")
                                             ),
@@ -576,7 +576,7 @@ shinyUI(fluidPage(
 
                                               ')),
 
-                                                    sliderInput("yearSelectedT20W", "Since year",min = (helper(T20WTeamNames,"./t20/t20WomenBattingBowlingDetails")[[1]]), max = (helper(T20WTeamNames,"./t20/t20WomenBattingBowlingDetails")[[2]]), value = (helper(T20WTeamNames,"./t20/t20WomenBattingBowlingDetails")[[1]])),
+                                                    sliderInput("yearSelectedT20W", "Since year",min = (helper(T20WTeamNames,"./t20/t20WomenBattingBowlingDetails")[[1]])-1, max = (helper(T20WTeamNames,"./t20/t20WomenBattingBowlingDetails")[[2]]), value = (helper(T20WTeamNames,"./t20/t20WomenBattingBowlingDetails")[[1]])),
                                                     sliderInput("minMatchesT20W", "Matches played",min = (helper(T20WTeamNames,"./t20/t20WomenBattingBowlingDetails")[[3]]), max = (helper(T20WTeamNames,"./t20/t20WomenBattingBowlingDetails")[[4]]), value = 0),
                                                     uiOutput("ModeT20W")
 
@@ -619,7 +619,7 @@ shinyUI(fluidPage(
                                                     }
                                                   ')),
 
-                                                    sliderInput("yearSelected1T20W", "Since year",min = (helper2(T20WTeamNames,"./t20/t20WomenBattingBowlingDetails")[[1]]), max = (helper2(T20WTeamNames,"./t20/t20WomenBattingBowlingDetails")[[2]]), value = (helper2(T20WTeamNames,"./t20/t20WomenBattingBowlingDetails")[[1]])),
+                                                    sliderInput("yearSelected1T20W", "Since year",min = (helper2(T20WTeamNames,"./t20/t20WomenBattingBowlingDetails")[[1]])-1, max = (helper2(T20WTeamNames,"./t20/t20WomenBattingBowlingDetails")[[2]]), value = (helper2(T20WTeamNames,"./t20/t20WomenBattingBowlingDetails")[[1]])),
                                                     sliderInput("minMatches1T20W", "Matches played",min = (helper2(T20WTeamNames,"./t20/t20WomenBattingBowlingDetails")[[3]]), max = (helper2(T20WTeamNames,"./t20/t20WomenBattingBowlingDetails")[[4]]), value = 0),
                                                     uiOutput("Mode1T20W")
                                                   ),
@@ -777,7 +777,7 @@ shinyUI(fluidPage(
 
                                               ')),
 
-                                             sliderInput("yearSelectedBBL", "Since year",min = (helper(BBLTeamNames,"./bbl/bblBattingBowlingDetails")[[1]]), max = (helper(BBLTeamNames,"./bbl/bblBattingBowlingDetails")[[2]]), value = (helper(BBLTeamNames,"./bbl/bblBattingBowlingDetails")[[1]])),
+                                             sliderInput("yearSelectedBBL", "Since year",min = (helper(BBLTeamNames,"./bbl/bblBattingBowlingDetails")[[1]])-1, max = (helper(BBLTeamNames,"./bbl/bblBattingBowlingDetails")[[2]]), value = (helper(BBLTeamNames,"./bbl/bblBattingBowlingDetails")[[1]])),
                                              sliderInput("minMatchesBBL", "Matches played",min = (helper(BBLTeamNames,"./bbl/bblBattingBowlingDetails")[[3]]), max = (helper(BBLTeamNames,"./bbl/bblBattingBowlingDetails")[[4]]), value = 0),
                                              uiOutput("ModeBBL")
 
@@ -820,7 +820,7 @@ shinyUI(fluidPage(
                                                     }
                                                   ')),
 
-                                             sliderInput("yearSelected1BBL", "Since year",min = (helper2(BBLTeamNames,"./bbl/bblBattingBowlingDetails")[[1]]), max = (helper2(BBLTeamNames,"./bbl/bblBattingBowlingDetails")[[2]]), value = (helper2(BBLTeamNames,"./bbl/bblBattingBowlingDetails")[[1]])),
+                                             sliderInput("yearSelected1BBL", "Since year",min = (helper2(BBLTeamNames,"./bbl/bblBattingBowlingDetails")[[1]])-1, max = (helper2(BBLTeamNames,"./bbl/bblBattingBowlingDetails")[[2]]), value = (helper2(BBLTeamNames,"./bbl/bblBattingBowlingDetails")[[1]])),
                                              sliderInput("minMatches1BBL", "Matches played",min = (helper2(BBLTeamNames,"./bbl/bblBattingBowlingDetails")[[3]]), max = (helper2(BBLTeamNames,"./bbl/bblBattingBowlingDetails")[[4]]), value = 0),
                                              uiOutput("Mode1BBL")
                                            ),
@@ -976,7 +976,7 @@ shinyUI(fluidPage(
 
                                               ')),
 
-                                             sliderInput("yearSelectedNTB", "Since year",min = (helper(NTBTeamNames,"./ntb/ntbBattingBowlingDetails")[[1]]), max = (helper(NTBTeamNames,"./ntb/ntbBattingBowlingDetails")[[2]]), value = (helper(NTBTeamNames,"./ntb/ntbBattingBowlingDetails")[[1]])),
+                                             sliderInput("yearSelectedNTB", "Since year",min = (helper(NTBTeamNames,"./ntb/ntbBattingBowlingDetails")[[1]])-1, max = (helper(NTBTeamNames,"./ntb/ntbBattingBowlingDetails")[[2]]), value = (helper(NTBTeamNames,"./ntb/ntbBattingBowlingDetails")[[1]])),
                                              sliderInput("minMatchesNTB", "Matches played",min = (helper(NTBTeamNames,"./ntb/ntbBattingBowlingDetails")[[3]]), max = (helper(NTBTeamNames,"./ntb/ntbBattingBowlingDetails")[[4]]), value = 0),
                                              uiOutput("ModeNTB")
 
@@ -1019,7 +1019,7 @@ shinyUI(fluidPage(
                                                     }
                                                   ')),
 
-                                             sliderInput("yearSelected1NTB", "Since year",min = (helper2(NTBTeamNames,"./ntb/ntbBattingBowlingDetails")[[1]]), max = (helper2(NTBTeamNames,"./ntb/ntbBattingBowlingDetails")[[2]]), value = (helper2(NTBTeamNames,"./ntb/ntbBattingBowlingDetails")[[1]])),
+                                             sliderInput("yearSelected1NTB", "Since year",min = (helper2(NTBTeamNames,"./ntb/ntbBattingBowlingDetails")[[1]])-1, max = (helper2(NTBTeamNames,"./ntb/ntbBattingBowlingDetails")[[2]]), value = (helper2(NTBTeamNames,"./ntb/ntbBattingBowlingDetails")[[1]])),
                                              sliderInput("minMatches1NTB", "Matches played",min = (helper2(NTBTeamNames,"./ntb/ntbBattingBowlingDetails")[[3]]), max = (helper2(NTBTeamNames,"./ntb/ntbBattingBowlingDetails")[[4]]), value = 0),
                                              uiOutput("Mode1NTB")
                                            ),
@@ -1176,7 +1176,7 @@ shinyUI(fluidPage(
 
                                               ')),
 
-                                             sliderInput("yearSelectedPSL", "Since year",min = (helper(PSLTeamNames,"./psl/pslBattingBowlingDetails")[[1]]), max = (helper(PSLTeamNames,"./psl/pslBattingBowlingDetails")[[2]]), value = (helper(PSLTeamNames,"./psl/pslBattingBowlingDetails")[[1]])),
+                                             sliderInput("yearSelectedPSL", "Since year",min = (helper(PSLTeamNames,"./psl/pslBattingBowlingDetails")[[1]])-1, max = (helper(PSLTeamNames,"./psl/pslBattingBowlingDetails")[[2]]), value = (helper(PSLTeamNames,"./psl/pslBattingBowlingDetails")[[1]])),
                                              sliderInput("minMatchesPSL", "Matches played",min = (helper(PSLTeamNames,"./psl/pslBattingBowlingDetails")[[3]]), max = (helper(PSLTeamNames,"./psl/pslBattingBowlingDetails")[[4]]), value = 0),
                                              uiOutput("ModePSL")
 
@@ -1219,7 +1219,7 @@ shinyUI(fluidPage(
                                                     }
                                                   ')),
 
-                                             sliderInput("yearSelected1PSL", "Since year",min = (helper2(PSLTeamNames,"./psl/pslBattingBowlingDetails")[[1]]), max = (helper2(PSLTeamNames,"./psl/pslBattingBowlingDetails")[[2]]), value = (helper2(PSLTeamNames,"./psl/pslBattingBowlingDetails")[[1]])),
+                                             sliderInput("yearSelected1PSL", "Since year",min = (helper2(PSLTeamNames,"./psl/pslBattingBowlingDetails")[[1]])-1, max = (helper2(PSLTeamNames,"./psl/pslBattingBowlingDetails")[[2]]), value = (helper2(PSLTeamNames,"./psl/pslBattingBowlingDetails")[[1]])),
                                              sliderInput("minMatches1PSL", "Matches played",min = (helper2(PSLTeamNames,"./psl/pslBattingBowlingDetails")[[3]]), max = (helper2(PSLTeamNames,"./psl/pslBattingBowlingDetails")[[4]]), value = 0),
                                              uiOutput("Mode1PSL")
                                            ),
@@ -1376,7 +1376,7 @@ shinyUI(fluidPage(
 
                                               ')),
 
-                                    sliderInput("yearSelectedWBB", "Since year",min = (helper(WBBTeamNames,"./wbb/wbbBattingBowlingDetails")[[1]]), max = (helper(WBBTeamNames,"./wbb/wbbBattingBowlingDetails")[[2]]), value = (helper(WBBTeamNames,"./wbb/wbbBattingBowlingDetails")[[1]])),
+                                    sliderInput("yearSelectedWBB", "Since year",min = (helper(WBBTeamNames,"./wbb/wbbBattingBowlingDetails")[[1]])-1, max = (helper(WBBTeamNames,"./wbb/wbbBattingBowlingDetails")[[2]]), value = (helper(WBBTeamNames,"./wbb/wbbBattingBowlingDetails")[[1]])),
                                     sliderInput("minMatchesWBB", "Matches played",min = (helper(WBBTeamNames,"./wbb/wbbBattingBowlingDetails")[[3]]), max = (helper(WBBTeamNames,"./wbb/wbbBattingBowlingDetails")[[4]]), value = 0),
                                     uiOutput("ModeWBB")
 
@@ -1419,7 +1419,7 @@ shinyUI(fluidPage(
                                                                             }
                                                                         ')),
 
-                                       sliderInput("yearSelected1WBB", "Since year",min = (helper2(WBBTeamNames,"./wbb/wbbBattingBowlingDetails")[[1]]), max = (helper2(WBBTeamNames,"./wbb/wbbBattingBowlingDetails")[[2]]), value = (helper2(WBBTeamNames,"./wbb/wbbBattingBowlingDetails")[[1]])),
+                                       sliderInput("yearSelected1WBB", "Since year",min = (helper2(WBBTeamNames,"./wbb/wbbBattingBowlingDetails")[[1]])-1, max = (helper2(WBBTeamNames,"./wbb/wbbBattingBowlingDetails")[[2]]), value = (helper2(WBBTeamNames,"./wbb/wbbBattingBowlingDetails")[[1]])),
                                        sliderInput("minMatches1WBB", "Matches played",min = (helper2(WBBTeamNames,"./wbb/wbbBattingBowlingDetails")[[3]]), max = (helper2(WBBTeamNames,"./wbb/wbbBattingBowlingDetails")[[4]]), value = 0),
                                        uiOutput("Mode1WBB")
                                      ),
@@ -1578,7 +1578,7 @@ shinyUI(fluidPage(
 
                                               ')),
 
-                                             sliderInput("yearSelectedCPL", "Since year",min = (helper(CPLTeamNames,"./cpl/cplBattingBowlingDetails")[[1]]), max = (helper(CPLTeamNames,"./cpl/cplBattingBowlingDetails")[[2]]), value = (helper(CPLTeamNames,"./cpl/cplBattingBowlingDetails")[[1]])),
+                                             sliderInput("yearSelectedCPL", "Since year",min = (helper(CPLTeamNames,"./cpl/cplBattingBowlingDetails")[[1]])-1, max = (helper(CPLTeamNames,"./cpl/cplBattingBowlingDetails")[[2]]), value = (helper(CPLTeamNames,"./cpl/cplBattingBowlingDetails")[[1]])),
                                              sliderInput("minMatchesCPL", "Matches played",min = (helper(CPLTeamNames,"./cpl/cplBattingBowlingDetails")[[3]]), max = (helper(CPLTeamNames,"./cpl/cplBattingBowlingDetails")[[4]]), value = 0),
                                              uiOutput("ModeCPL")
 
@@ -1621,7 +1621,7 @@ shinyUI(fluidPage(
                                                     }
                                                   ')),
 
-                                             sliderInput("yearSelected1CPL", "Since year",min = (helper2(CPLTeamNames,"./cpl/cplBattingBowlingDetails")[[1]]), max = (helper2(CPLTeamNames,"./cpl/cplBattingBowlingDetails")[[2]]), value = (helper2(CPLTeamNames,"./cpl/cplBattingBowlingDetails")[[1]])),
+                                             sliderInput("yearSelected1CPL", "Since year",min = (helper2(CPLTeamNames,"./cpl/cplBattingBowlingDetails")[[1]])-1, max = (helper2(CPLTeamNames,"./cpl/cplBattingBowlingDetails")[[2]]), value = (helper2(CPLTeamNames,"./cpl/cplBattingBowlingDetails")[[1]])),
                                              sliderInput("minMatches1CPL", "Matches played",min = (helper2(CPLTeamNames,"./cpl/cplBattingBowlingDetails")[[3]]), max = (helper2(CPLTeamNames,"./cpl/cplBattingBowlingDetails")[[4]]), value = 0),
                                              uiOutput("Mode1CPL")
                                            ),
