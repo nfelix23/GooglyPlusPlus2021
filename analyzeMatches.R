@@ -16,6 +16,7 @@ analyzeMatches <- function(match,matchFunc,plotOrTable,team,opposition,t20type) 
     if(t20type == "IPL"){
         IPLmatch <- paste("./ipl/iplMatches/", match,".RData",sep="")
         cat("analymatch=",getwd())
+
         load(IPLmatch)
         matchDF <- overs
     } else if (t20type == "T20M"){

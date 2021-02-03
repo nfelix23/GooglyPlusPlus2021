@@ -122,18 +122,20 @@ analyzeBowlers <- function(bowler,func, t20type="IPL") {
         bowlerWicketsAgainstOpposition(bowlerDF,bowler)
     } else if (func == "Bowler's Wickets at Venues"){
         bowlerWicketsVenue(bowlerDF,bowler)
-    } else if (func == "Bowler's wickets prediction"){
-        # This is for the function wicket predict
-        bowlerDF1 <- NULL
-        # Create a consolidated Data frame of batsman for all IPL teams played
-        for (i in seq_along(teamNames)){
-            # The below 2 lines for Bowler's wicket prediction
-            df1 <- getDeliveryWickets(team=teamNames[i],dir="./IPLmatches",name=bowler,save=FALSE)
-            bowlerDF1 <- rbind(bowlerDF1,df1)
-        }
-        bowlerWktsPredict(bowlerDF1,bowler)
-
     }
+
+    # else if (func == "Bowler's wickets prediction"){
+    #     # This is for the function wicket predict
+    #     bowlerDF1 <- NULL
+    #     # Create a consolidated Data frame of batsman for all IPL teams played
+    #     for (i in seq_along(teamNames)){
+    #         # The below 2 lines for Bowler's wicket prediction
+    #         df1 <- getDeliveryWickets(team=teamNames[i],dir="./ipl/iplMatches",name=bowler,save=FALSE)
+    #         bowlerDF1 <- rbind(bowlerDF1,df1)
+    #     }
+    #     bowlerWktsPredict(bowlerDF1,bowler)
+    #
+    # }
 
 }
 

@@ -1,0 +1,12 @@
+name: gpp1
+title: gpp1
+username:
+account: tvganesh
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 3565934
+bundleId: 4171122
+url: https://tvganesh.shinyapps.io/gpp1/
+when: 1612272081.7323
+asMultiple: FALSE
+asStatic: FALSE

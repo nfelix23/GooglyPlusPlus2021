@@ -28,8 +28,8 @@ bowlerFuncs <- c("Mean Economy Rate of bowler",
                      "Bowler's Cumulative Avg. Economy Rate",
                      "Bowler's Wicket Plot",
                      "Bowler's Wickets against opposition",
-                     "Bowler's Wickets at Venues",
-                     "Bowler's wickets prediction")
+                     "Bowler's Wickets at Venues")
+                     #"Bowler's wickets prediction")
 
 
 # Functions to analyze IPL matches
@@ -38,7 +38,7 @@ matchFuncs <- c("Match Batting Scorecard",
                    "Batsmen vs Bowlers",
                    "Bowling Wicket Kind",
                    "Match Bowling Scorecard",
-                   "Bowling Wicket Runs",
+                   #"Bowling Wicket Runs",
                    "Bowling Wicket Match",
                    "Bowler vs Batsmen",
                    "Match Worm Graph")
